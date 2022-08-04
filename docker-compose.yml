@@ -6,4 +6,4 @@ services:
     volumes:
       - .:/var/www/documentation
     ports:
-      - 3000:3000
+      - 42069:42069
