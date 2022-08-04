@@ -14,6 +14,9 @@ export default {
 					{ text: 'Introduction', link: '/guide/external-api/' },
 					{ text: 'Users', link: '/guide/external-api/users' },
 					{ text: 'Servers', link: '/guide/external-api/servers' },
+					{ text: 'Nodes', link: '/guide/external-api/nodes' },
+					{ text: 'Templates', link: '/guide/external-api/templates' },
+					{ text: 'Addresses', link: '/guide/external-api/addresses' },
 				]
 			}
 		]
