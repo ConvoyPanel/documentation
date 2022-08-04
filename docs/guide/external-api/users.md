@@ -45,7 +45,7 @@
 }
 ```
 
-## Fetching an individual user
+## Fetching a user
 
 **GET** `/api/application/users/<user id>`
 
