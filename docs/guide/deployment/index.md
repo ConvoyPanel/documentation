@@ -71,7 +71,7 @@ If you receive an error running the Composer command regarding a zip extension, 
 ```
 composer install --optimize-autoloader --no-dev
 npm install
-npm run production
+npm run build
 php artisan key:generate
 php artisan migrate
 php artisan route:cache
