@@ -101,14 +101,8 @@ Returns
 }
 ```
 
-## Deleting an address
-::: danger
-This method by default only deletes the address from the database and NOT FROM THE NODE. Make sure to set `purge` to `true` to fully clear any data associated with the server.
-:::
+## Deleting an Address
 
-Fields
-```php
-'purge' => 'boolean|nullable' // Set this to 'true' to also delete the server from the Proxmox node
-```
+**DELETE** `/api/application/nodes/<nodeid>/addresses/<address id>`
 
 Returns no content

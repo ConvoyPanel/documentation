@@ -96,16 +96,30 @@ Returns
 **POST** `/api/application/servers`
 
 ```php
-'type' => 'in:new,existing|required',
-'name' => 'min:1|max:40',
-'node_id' => 'exists:nodes,id|required',
-'user_id' => 'exists:users,id|required',
-'vmid' => 'numeric|required_if:type,existing',
-'template_id' => 'exists:templates,id|required_if:type,new',
-'is_template' => 'boolean|required_if:type,existing',
-'is_visible' => 'boolean|required_with:is_template',
-'addresses' => 'array|max:2',
-'addresses.*' => 'exists:ip_addresses,id'
+$rules = [
+    'type' => 'in:new,existing|required',
+    'name' => 'min:1|max:40',
+    'node_id' => 'exists:nodes,id|required',
+    'user_id' => 'exists:users,id|required',
+];
+
+if ($this->request->get('type') === 'new')
+{
+    $rules['template_id'] = 'exists:templates,id|required';
+    $rules['vmid'] = 'sometimes|numeric|min:100|max:999999999|required';
+    $rules['limits'] = 'array|required';
+    $rules['limits.cpu'] = 'numeric|min:1|required';
+    $rules['limits.memory'] = 'numeric|min:16777216|required';
+    $rules['limits.disk'] = 'numeric|min:1|required';
+    $rules['limits.address_ids'] = 'numeric|exists:ip_addresses,id|required';
+}
+
+if ($this->request->get('type') === 'existing')
+{
+    $rules['configuration.template'] = 'sometimes|boolean';
+    $rules['configuration.visible'] = 'sometimes|boolean';
+    $rules['vmid'] = 'numeric|min:100|max:999999999|required';
+}
 ```
 
 Returns
@@ -123,13 +137,10 @@ Returns
 ```
 
 ## Deleting a server
-::: danger
-This method by default only deletes the server from the database and NOT FROM THE NODE. Make sure to set `purge` to `true` to fully clear any data associated with the server.
-:::
 
 Fields
 ```php
-'purge' => 'boolean|nullable' // Set this to 'true' to also delete the server from the Proxmox node
+'no_purge' => 'boolean|nullable' // Set this to 'true' to keep the virtual machine data
 ```
 
 Returns no content
@@ -139,101 +150,156 @@ Returns no content
 This endpoint can return an internal server error if the Proxmox node isn't available.
 :::
 
-**GET** `/api/application/servers/<server id>/specifications`
+**GET** `/api/application/servers/<server id>/details`
 
 ```json
 {
-    "data": {
-        "node": "proxmox",
-        "cores": 1,
-        "memory": 3179282432,
-        "disk": null,
+    "vmid": 100,
+    "status": "running",
+    "locked": false,
+    "usage": {
+        "uptime": 251704,
+        "network": {
+            "in": 0,
+            "out": 0
+        },
+        "disk": {
+            "write": 443992576,
+            "read": 388644124
+        }
+    },
+    "limits": {
+        "cpu": 2,
+        "memory": 3196059648,
+        "disk": 4508876800,
+        "addresses": {
+            "ipv4": {
+                "address": "1.2.3.6",
+                "cidr": "22",
+                "gateway": "192.168.1.1",
+                "mac_address": "62:B3:98:6F:E2:90"
+            },
+            "ipv6": {
+                "address": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+                "cidr": "64",
+                "gateway": "fe80::1"
+            }
+        }
+    },
+    "configuration": {
+        "boot_order": [
+            "sata0"
+        ],
         "disks": [
             {
-                "disk": "ide0",
-                "size": "2G",
-                "pending": false
-            },
-            {
-                "disk": "ide1",
-                "size": "3G",
-                "pending": false
-            },
-            {
                 "disk": "sata0",
-                "size": "5324M",
+                "size": 4508876800,
                 "pending": false
             },
             {
-                "disk": "scsi0",
-                "size": "11468M",
+                "disk": "ide2",
+                "size": 4194304,
                 "pending": false
             }
         ],
-        "ipconfig": {
-            "key": "ipconfig0",
-            "value": " "
+        "template": 0,
+        "addresses": {
+            "ipv4": {
+                "address": "1.2.3.6",
+                "cidr": "22",
+                "mac_address": "62:B3:98:6F:E2:90",
+                "gateway": "192.168.1.1"
+            },
+            "ipv6": {
+                "address": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+                "cidr": "64",
+                "gateway": "fe80::1"
+            }
         }
-    }
+    },
+    "node_id": 1
 }
 ```
 
 ## Updating a server's specifications
 
-::: danger
-If you are making automation software, DO NOT immediately update the server specifications right after creating the server. The server is locked initially while it's cloning a template.
-
-To make sure your specifications gets processed by Proxmox, keep polling `/api/application/servers/<server id>/specifications` until Convoy returns non-null specifications. Then, you can send a request to edit the specifications.
-:::
-
-**PATCH** `/api/application/servers/<server id>/specifications`
+**PATCH** `/api/application/servers/<server id>/details`
 
 Fields
 ```php
-'cores' => 'numeric',
-'memory' => 'numeric',
-'disks' => 'array',
-'disks.*.disk' => 'string|required',
-'disks.*.size' => 'string|required',
-'ipconfig' => 'string',
-'lockIps' => 'array',
-'lockIps.*' => 'ip|required', // these are the actual ips you want to lock
+'limits' => 'sometimes|array|required',
+'limits.cpu' => 'sometimes|numeric|min:1|required',
+'limits.memory' => 'sometimes|numeric|min:16777216|required',
+'limits.disk' => 'sometimes|numeric|min:1|required',
+'limits.address_ids' => 'sometimes|numeric|exists:ip_addresses,id|required'
 ```
 
 Returns
 ```json
 {
-    "data": {
-        "node": "proxmox",
-        "cores": 1,
-        "memory": 3179282432,
-        "disk": null,
+    "vmid": 100,
+    "status": "running",
+    "locked": false,
+    "usage": {
+        "uptime": 251704,
+        "network": {
+            "in": 0,
+            "out": 0
+        },
+        "disk": {
+            "write": 443992576,
+            "read": 388644124
+        }
+    },
+    "limits": {
+        "cpu": 2,
+        "memory": 3196059648,
+        "disk": 4508876800,
+        "addresses": {
+            "ipv4": {
+                "address": "1.2.3.6",
+                "cidr": "22",
+                "gateway": "192.168.1.1",
+                "mac_address": "62:B3:98:6F:E2:90"
+            },
+            "ipv6": {
+                "address": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+                "cidr": "64",
+                "gateway": "fe80::1"
+            }
+        }
+    },
+    "configuration": {
+        "boot_order": [
+            "sata0"
+        ],
         "disks": [
             {
-                "disk": "ide0",
-                "size": "2G",
-                "pending": false
-            },
-            {
-                "disk": "ide1",
-                "size": "3G",
-                "pending": false
-            },
-            {
                 "disk": "sata0",
-                "size": "5324M",
+                "size": 4508876800,
                 "pending": false
             },
             {
-                "disk": "scsi0",
-                "size": "11468M",
+                "disk": "ide2",
+                "size": 4194304,
                 "pending": false
             }
         ],
-        "ipconfig": {
-            "key": "ipconfig0",
-            "value": " "
+        "template": 0,
+        "addresses": {
+            "ipv4": {
+                "address": "1.2.3.6",
+                "cidr": "22",
+                "mac_address": "62:B3:98:6F:E2:90",
+                "gateway": "192.168.1.1"
+            },
+            "ipv6": {
+                "address": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+                "cidr": "64",
+                "gateway": "fe80::1"
+            }
         }
-    }
+    },
+    "node_id": 1
 }
 ```

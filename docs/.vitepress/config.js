@@ -17,6 +17,7 @@ export default {
 					{ text: 'Nodes', link: '/guide/external-api/nodes' },
 					{ text: 'Templates', link: '/guide/external-api/templates' },
 					{ text: 'Addresses', link: '/guide/external-api/addresses' },
+					{ text: 'Single Sign On', link: '/guide/external-api/single-sign-on' },
 				]
 			}
 		]
