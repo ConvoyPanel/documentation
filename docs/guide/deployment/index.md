@@ -4,6 +4,10 @@
 Convoy is not exactly free software. If you are commercializing this panel, please consider purchasing a monthly subscription to support development.
 :::
 
+::: info
+This documentation is still a work in progress. Other information like generating a user, more optimization commands for production, etc will come out soon.
+:::
+
 ## Install Docker
 
 Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything works.
@@ -28,7 +32,7 @@ APP_ENV=production
 ...
 APP_DEBUG=false
 ...
-DB_HOST=mysql
+DB_HOST=database
 ...
 DB_DATABASE=DATABASE_NAME
 DB_USERNAME=CUSTOM_USER_NAME
@@ -90,6 +94,20 @@ Start the queue worker
 
 `docker compose up -d`
 
-::: info
-This documentation is still a work in progress. Other information like generating a user, more optimization commands for production, etc will come out soon.
-:::
+
+### Adding a user
+
+Enter the workspace container
+`docker compose exec workspace bash`
+
+Run PHP Repl
+`php artisan tinker`
+
+Create the user
+`User::create(['name' => 'YOUR_NAME', 'email' => 'YOUR_EMAIL@advinservers.gov', 'password' => Hash::make('YOUR_SECURE_PASSWORD')])`
+
+Exit out of Repl
+`exit`
+
+Exit Docker container
+CNTRL + D
