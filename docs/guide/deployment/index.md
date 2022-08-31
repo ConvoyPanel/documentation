@@ -120,7 +120,7 @@ Run PHP Repl
 `php artisan tinker`
 
 Create the user
-`User::create(['name' => 'YOUR_NAME', 'email' => 'YOUR_EMAIL@advinservers.gov', 'password' => Hash::make('YOUR_SECURE_PASSWORD')])`
+`User::create(['name' => 'YOUR_NAME', 'email' => 'YOUR_EMAIL@advinservers.gov', 'password' => Hash::make('YOUR_SECURE_PASSWORD'), 'root_admin' => 1])`
 
 Exit out of Repl
 `exit`
