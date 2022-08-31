@@ -8,6 +8,22 @@ Convoy is not exactly free software. If you are commercializing this panel, plea
 This documentation is still a work in progress. Other information like generating a user, more optimization commands for production, etc will come out soon.
 :::
 
+## Compatbility
+
+### Supported Operating Systems
+
+| Operating System        | Supported           | Notes |
+| ----------------------- |:-------------------:| ----- |
+| Debian 11               | :white_check_mark:  |       |
+| Ubuntu 20.04            | :white_check_mark:  |       |
+| Ubuntu 22.04            | :white_check_mark:  |       |
+
+### Supported Proxmox Versions
+
+| ProxmoxVE Version       | Convoy Version      | Notes |
+| ----------------------- | ------------------- | ----- |
+| 7.2-7                   | v1.1.0-beta         |       |
+
 ## Install Docker
 
 Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything works.
