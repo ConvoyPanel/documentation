@@ -7,6 +7,25 @@ Convoy is not free software. Production use of Convoy is prohibited. You will ne
 ## Minimum System Requirements
 
 
+::: info
+This documentation is still a work in progress. Other information like generating a user, more optimization commands for production, etc will come out soon.
+:::
+
+## Compatbility
+
+### Supported Operating Systems
+
+| Operating System        | Supported           | Notes |
+| ----------------------- |:-------------------:| ----- |
+| Debian 11               | :white_check_mark:  |       |
+| Ubuntu 20.04            | :white_check_mark:  |       |
+| Ubuntu 22.04            | :white_check_mark:  |       |
+
+### Supported Proxmox Versions
+
+| ProxmoxVE Version       | Convoy Version      | Notes |
+| ----------------------- | ------------------- | ----- |
+| 7.2-7                   | v1.1.0-beta         |       |
 
 ## Install Docker
 
@@ -51,7 +70,7 @@ APP_ENV=production
 ...
 APP_DEBUG=false
 ...
-DB_HOST=mysql
+DB_HOST=database
 ...
 DB_DATABASE=DATABASE_NAME
 DB_USERNAME=CUSTOM_USER_NAME
@@ -113,6 +132,20 @@ Start the queue worker
 
 `docker compose up -d`
 
-::: info
-This documentation is still a work in progress. Other information like generating a user, more optimization commands for production, etc will come out soon.
-:::
+
+### Adding a user
+
+Enter the workspace container
+`docker compose exec workspace bash`
+
+Run PHP Repl
+`php artisan tinker`
+
+Create the user
+`User::create(['name' => 'YOUR_NAME', 'email' => 'YOUR_EMAIL@advinservers.gov', 'password' => Hash::make('YOUR_SECURE_PASSWORD'), 'root_admin' => 1])`
+
+Exit out of Repl
+`exit`
+
+Exit Docker container
+CNTRL + D
