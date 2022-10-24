@@ -1,22 +1,45 @@
 # Deploying Convoy
 
 ::: danger
-Convoy is not exactly free software. If you are commercializing this panel, please consider purchasing a monthly subscription to support development.
+Convoy is not free software. Production use of Convoy is prohibited. You will need an active subscription or explicit permission from Performave.
 :::
+
+## Minimum System Requirements
+
+
 
 ## Install Docker
 
-Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything works.
+::: danger
+There's ZERO support from Performave if you don't install Convoy with Docker.
+:::
 
-`curl -fsSL https://get.docker.com/ | sh`
+Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything works. It's possible to use cPanel, but it'll be ABSOLUTELY hard. You'll be spending more time debugging configuration errors with cPanel than working at a retail job for enough money to buy a virtual machine to run Convoy smoothly.
+
+```sh
+curl -fsSL https://get.docker.com/ | sh
+```
 
 ## Download Files
 
-Download the latest zipped source code from https://github.com/ConvoyPanel/panel/releases/
+First, create the folder where the panel will be stored in and change your current directory to that newly created folder.
 
-Unzip the archive in `/var/www/`. If this directory doesn't exist, create it using `mkdir -p /var/www/`.
+```sh
+mkdir -p /var/ww/convoy
+cd /var/www/convoy
+```
+
+Once you've created the directory and moved into it, you'll need to download the panel. Then, you'll need to unpack the archive. Next, you'll need to set the correct permissions on the `storage/` and `bootstrap/cache/` directories.
+
+```sh
+curl -Lo panel.tar.gz https://github.com/convoypanel/panel/releases/latest/download/panel.tar.gz
+tar -xzvf panel.tar.gz
+chmod -R 755 storage/* bootstrap/cache/
+```
 
 ## Installation
+
+Now you have all the files, it's time to configure Convoy to run.
 
 ### Environment Variables
 
