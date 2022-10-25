@@ -127,10 +127,10 @@ docker compose up -d
 
 We now have to install the core dependencies that Convoy depends on.
 ```sh
-docker compose exec workspace composer install --no-dev --optimize-autoloader \
-                              php artisan optimize \
-                              npm install \
-                              npm run build \
+docker compose exec workspace composer install --no-dev --optimize-autoloader && \
+                              php artisan optimize && \
+                              npm install && \
+                              npm run build
 ```
 
 ### Setting an Application Key
