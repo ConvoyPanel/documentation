@@ -192,7 +192,7 @@ docker compose up -d
 ### My performance isn't as expected
 If Convoy isn't able to keep up with the demand of your users, you can try tweaking the settings of PHP-FPM. In `/var/www/convoy/dockerfiles/php/Dockerfile`, there is this specific line below. Tweak `100` to any number. This number dictates how many concurrent requests PHP-FPM can handle. We don't recommend putting a million or a sextillion because in times of heavy traffic, Convoy can consume too many resources and crash your system.
 
-```dockerfile
+```
 RUN echo 'pm.max_children = 100' >> /usr/local/etc/php-fpm.d/zz-docker.conf
 ```
 
