@@ -196,7 +196,7 @@ If Convoy isn't able to keep up with the demand of your users, you can try tweak
 RUN echo 'pm.max_children = 100' >> /usr/local/etc/php-fpm.d/zz-docker.conf
 ```
 
-You can also tweak the [PHP OPCache settings](https://www.php.net/manual/en/intro.opcache.php) that will provide performance improvements for both heavy traffic and even light traffic—by decreasing the latency of each request. I'd recommend searching `how to optimize PHP OPCache` on Google and make sure the article was posted in the last two years (and not 7 years). Then, you can tweak the OPCache settings in `/var/www/convoy/dockerfiles/php/php.ini-production` or ``/var/www/convoy/dockerfiles/php/php.ini-development` if your `APP_ENV` is set to `local`.
+You can also tweak the [PHP OPCache settings](https://www.php.net/manual/en/intro.opcache.php) that will provide performance improvements for both heavy traffic and even light traffic—by decreasing the latency of each request. I'd recommend searching `how to optimize PHP OPCache` on Google and make sure the article was posted in the last two years (and not 7 years). Then, you can tweak the OPCache settings in `/var/www/convoy/dockerfiles/php/php.ini-production` or `/var/www/convoy/dockerfiles/php/php.ini-development` if your `APP_ENV` is set to `local`.
 
 After you make the necessary changes, you can make them live with the following commands.
 ```sh
