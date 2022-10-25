@@ -128,18 +128,18 @@ docker compose up -d
 We now have to install the core dependencies that Convoy depends on.
 ```sh
 docker compose exec workspace bash -c "composer install --no-dev --optimize-autoloader && \
-                              php artisan optimize && \
-                              npm install && \
-                              npm run build"
+                                       npm install && \
+                                       npm run build"
 ```
 
 ### Setting an Application Key
 
-We also have to generate an application key for Convoy. This key will be used for password hashes and other parts of Convoy that depends on cryptography.
+We also have to generate an application key for Convoy. This key will be used for password hashes and other parts of Convoy that depends on cryptography. This command will also cache the current configuration for performance improvements. If any changes are ever made to Convoy, either the code or any configuration, it's good to rerun `php artisan optimize` to make sure the new values are cached.
 ```sh
 # Only run the command below if you are installing this panel for
 # the first time and do not have any data in the database.
-docker compose exec workspace php artisan key:generate --force
+docker compose exec workspace bash -c "php artisan key:generate --force && \
+                                       php artisan optimize"
 ```
 
 ::: danger
