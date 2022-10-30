@@ -2,7 +2,7 @@
 
 ## Fetching Nodes
 
-**GET** `/api/application/nodes?page=<page number>`
+**GET** `/api/application/nodes?page=<page number>&filter[hostname]=<hostname>&filter[cluster]=<cluster>`
 
 ```json
 {

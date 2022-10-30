@@ -203,3 +203,10 @@ After you make the necessary changes, you can make them live with the following 
 docker compose build
 docker compose up -d
 ```
+
+### My changes in the .env or environment file isn't going live or persisting
+If you made changes to your environment file, Convoy won't pick it up until the configuration cache is cleared. Run the commands below to recache the configuration.
+```sh
+docker compose exec workspace bash -c "php artisan optimize:clear && \
+                                       php artisan optimize"
+```

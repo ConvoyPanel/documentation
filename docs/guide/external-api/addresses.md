@@ -2,7 +2,7 @@
 
 ## Fetching A Nodes Addresses
 
-**GET** `/api/application/nodes/<nodeid>/addresses`
+**GET** `/api/application/nodes/<nodeid>/addresses?filter[server_id]=<server id>&filter[node_id]=<node id>&filter[address]=<address>&filter[cidr]=<cidr>&filter[gateway]=<gateway>&filter[type]=<type>`
 ```json
 {
     "data": {
@@ -12,7 +12,8 @@
             "cidr": "24",
             "gateway": "192.168.1.1",
             "node_id": 1,
-            "server_id": 70
+            "server_id": 70,
+            "mac_address": null
         },
         {
             "id": 2,
@@ -20,7 +21,8 @@
             "cidr": "64",
             "gateway": "fe80::1",
             "node_id": 1,
-            "server_id": null
+            "server_id": null,
+            "mac_address": null
         }
     }
 }
@@ -37,7 +39,8 @@
         "cidr": "24",
         "gateway": "192.168.1.1",
         "node_id": 1,
-        "server_id": 70
+        "server_id": 70,
+        "mac_address": null
     }
 }
 ```
@@ -50,23 +53,23 @@
 Fields
 ```php
 'server_id' => 'exists:servers,id|nullable',
-'node_id' => 'required|exists:nodes,id',
 'address' => 'ip',
-'cidr' => 'numeric|required',
+'cidr' => 'numeric|required', //subnet mask, netmask
 'gateway' => 'ip',
-'type' => 'required', // This value can be: ip, gw, ip6, gw6.
+'type' => 'required', // This value can be: ipv4, ipv6
 ```
 
 Returns
 ```json
 {
     "data": {
-        "id": 1,
-        "address": "1.2.3.4",
-        "cidr": "24",
-        "gateway": "192.168.1.1",
-        "node_id": 1,
-        "server_id": 70
+      "id": 1,
+      "address": "192.168.0.1",
+      "cidr": "24",
+      "gateway": "192.168.1.1",
+      "node_id": 1,
+      "server_id": 12,
+      "mac_address": null
     }
 }
 ```
@@ -79,11 +82,10 @@ Returns
 Fields
 ```php
 'server_id' => 'exists:servers,id|nullable',
-'node_id' => 'required|exists:nodes,id',
 'address' => 'ip',
 'cidr' => 'numeric|required',
 'gateway' => 'ip',
-'type' => 'required', // This value can be: ip, gw, ip6, gw6.
+'type' => 'required', // This value can be: ipv4, ipv6
 ```
 
 
@@ -91,12 +93,13 @@ Returns
 ```json
 {
     "data": {
-        "id": 1,
-        "address": "1.2.3.4",
-        "cidr": "24",
-        "gateway": "192.168.1.1",
-        "node_id": 1,
-        "server_id": 70
+      "id": 1,
+      "address": "192.168.0.1",
+      "cidr": "24",
+      "gateway": "192.168.1.1",
+      "node_id": 1,
+      "server_id": 12,
+      "mac_address": null
     }
 }
 ```
