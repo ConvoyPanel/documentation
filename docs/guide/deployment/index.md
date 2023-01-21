@@ -8,25 +8,26 @@ Convoy is not free software. Production use of Convoy is prohibited. You will ne
 
 ### Supported Operating Systems
 
-| Operating System        | Supported           | Notes |
-| ----------------------- |:-------------------:| ----- |
-| Debian 11               | :white_check_mark:  |       |
-| Ubuntu 20.04            | :white_check_mark:  |       |
-| Ubuntu 22.04            | :white_check_mark:  |       |
+| Operating System |     Supported      | Notes |
+| ---------------- | :----------------: | ----- |
+| Debian 11        | :white_check_mark: |       |
+| Ubuntu 20.04     | :white_check_mark: |       |
+| Ubuntu 22.04     | :white_check_mark: |       |
 
 ### Supported Proxmox Versions
 
-| ProxmoxVE Version       | Convoy Version      | Notes |
-| ----------------------- | ------------------- | ----- |
-| 7.2-7 & later           | v1.1.0-beta & later |       |
+| ProxmoxVE Version | Convoy Version             | Notes |
+| ----------------- | -------------------------- | ----- |
+| 7.2-7 & 7.3-4     | v1.1.0-beta to v2.0.3-beta |       |
+| 7.3-4 & later     | v3.0.0-beta & later        |       |
 
 ### Minimum System Requirements
 
-|                         |                     | Notes           |
-| ----------------------- | ------------------- | --------------- |
-| CPU                     | 1 Core              |                 |
-| Memory                  | 2 GiB               | Swap also works |
-| Disk                    | 10 GiB              |                 |
+|        |        | Notes                               |
+| ------ | ------ | ----------------------------------- |
+| CPU    | 2 Core |                                     |
+| Memory | 4 GiB  | Swap also works but not recommended |
+| Disk   | 10 GiB |                                     |
 
 ## Install Docker
 
@@ -84,7 +85,7 @@ DB_HOST=database
 ...
 DB_DATABASE=convoy
 DB_USERNAME=convoy_user
-DB_PASSWORD="Use special characters by wrapping the password with quotation marks :)"
+DB_PASSWORD='Use special characters by wrapping the password with quotation marks :)'
 DB_ROOT_PASSWORD=this_is_alphanumeric_6_9
 ```
 
@@ -96,23 +97,13 @@ CACHE_DRIVER=redis
 QUEUE_CONNECTION=redis
 SESSION_DRIVER=redis
 ```
+
 Now, we need to configure the Redis server that'll store key value pairs in its hyper-fast storage. Please leave `REDIS_HOST` and `REDIS_PORT` as is.
+
 ```
 REDIS_HOST=redis
 REDIS_PASSWORD=SUPER_SECURE_PASSWORD
 REDIS_PORT=6379
-```
-
-Great! We're almost there! We have to finally configure the websocket server that'll enable real-time communication in Convoy. Please leave `PUSHER_HOST` as is. For `VITE_PUSHER_HOST`, put either your hostname or IP address that your users will visit Convoy with. This should be similar to what you've put for `APP_URL`, except without the `http://` or `https://` protocol. Also, `VITE_PUSHER_PORT` has to be empty.
-
-```
-PUSHER_APP_ID=app-id
-PUSHER_APP_KEY=app-key
-PUSHER_APP_SECRET=app-secret
-PUSHER_HOST=soketi
-...
-VITE_PUSHER_HOST="convoy-panel.example.com"
-VITE_PUSHER_PORT=""
 ```
 
 ### Building the Dockerfiles
@@ -126,6 +117,7 @@ docker compose up -d
 ### Installing & Building Dependencies
 
 We now have to install the core dependencies that Convoy depends on.
+
 ```sh
 docker compose exec workspace bash -c "composer install --no-dev --optimize-autoloader && \
                                        npm install && \
@@ -135,6 +127,7 @@ docker compose exec workspace bash -c "composer install --no-dev --optimize-auto
 ### Setting an Application Key
 
 We also have to generate an application key for Convoy. This key will be used for password hashes and other parts of Convoy that depends on cryptography. This command will also cache the current configuration for performance improvements. If any changes are ever made to Convoy, either the code or any configuration, it's good to rerun `php artisan optimize` to make sure the new values are cached.
+
 ```sh
 # Only run the command below if you are installing this panel for
 # the first time and do not have any data in the database.
@@ -165,6 +158,7 @@ APP_DEBUG=false
 ```
 
 Then, rebuild the Dockerfiles and fully restart the containers.
+
 ```sh
 docker compose build
 docker compose down
@@ -174,14 +168,13 @@ docker compose up -d
 ### Adding a User
 
 ```sh
-docker compose exec workspace bash
-php artisan tinker
-> User::create(['name' => "Your Name", 'email' => "your.email@example.com", 'password' => Hash::make("your super secure password"), 'root_admin' => 1])
+docker compose exec workspace php artisan c:user:make
 ```
 
 ## FAQ
 
 ### What happens if I restart the machine running Convoy?
+
 Convoy is configured to automatically start up upon reboots or from any crashes the application may encounter. In case if it doesn't restart, run the following commands to bring up the Docker containers.
 
 ```sh
@@ -190,6 +183,7 @@ docker compose up -d
 ```
 
 ### My performance isn't as expected
+
 If Convoy isn't able to keep up with the demand of your users, you can try tweaking the settings of PHP-FPM. In `/var/www/convoy/dockerfiles/php/Dockerfile`, there is this specific line below. Tweak `100` to any number. This number dictates how many concurrent requests PHP-FPM can handle. We don't recommend putting a million or a sextillion because in times of heavy traffic, Convoy can consume too many resources and crash your system.
 
 ```
@@ -199,13 +193,16 @@ RUN echo 'pm.max_children = 100' >> /usr/local/etc/php-fpm.d/zz-docker.conf
 You can also tweak the [PHP OPCache settings](https://www.php.net/manual/en/intro.opcache.php) that will provide performance improvements for both heavy traffic and even light traffic—by decreasing the latency of each request. I'd recommend searching `how to optimize PHP OPCache` on Google and make sure the article was posted in the last two years (and not 7 years). Then, you can tweak the OPCache settings in `/var/www/convoy/dockerfiles/php/php.ini-production` or `/var/www/convoy/dockerfiles/php/php.ini-development` if your `APP_ENV` is set to `local`.
 
 After you make the necessary changes, you can make them live with the following commands.
+
 ```sh
 docker compose build
 docker compose up -d
 ```
 
 ### My changes in the .env or environment file isn't going live or persisting
+
 If you made changes to your environment file, Convoy won't pick it up until the configuration cache is cleared. Run the commands below to recache the configuration.
+
 ```sh
 docker compose exec workspace bash -c "php artisan optimize:clear && \
                                        php artisan optimize"
