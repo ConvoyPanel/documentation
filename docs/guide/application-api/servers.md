@@ -71,7 +71,7 @@ Available Request Parameters
             "current_page": 1,
             "total_pages": 7,
             "links": {
-                "next": "https://us-east.performave.com/api/admin/servers?page=2"
+                "next": "https://advinservers.com/api/admin/servers?page=2"
             }
         }
     }
@@ -181,7 +181,7 @@ Response
             "data": {
                 "id": 1,
                 "name": "Mike Hawk",
-                "email": "t@t.com",
+                "email": "joe@advinservers.com",
                 "email_verified_at": null,
                 "root_admin": true,
                 "servers_count": 0
@@ -285,7 +285,7 @@ Returns
             "data": {
                 "id": 1,
                 "name": "Mike Hawk",
-                "email": "t@t.com",
+                "email": "joe@advinservers.com",
                 "email_verified_at": null,
                 "root_admin": true,
                 "servers_count": 0
@@ -380,7 +380,7 @@ Returns
             "data": {
                 "id": 1,
                 "name": "Mike Hawk",
-                "email": "t@t.com",
+                "email": "joe@advinservers.com",
                 "email_verified_at": null,
                 "root_admin": true,
                 "servers_count": 0

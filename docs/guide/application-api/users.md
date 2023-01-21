@@ -17,7 +17,7 @@
         {
             "id": 1,
             "name": "Mike Hawk",
-            "email": "t@t.com",
+            "email": "joe@advinservers.com",
             "email_verified_at": null,
             "root_admin": true,
             "servers_count": 3
@@ -53,7 +53,7 @@
     "data": {
         "id": 1,
         "name": "Mike Hawk",
-        "email": "t@t.com",
+        "email": "joe@advinservers.com",
         "email_verified_at": null,
         "root_admin": true,
         "servers_count": 3
@@ -74,7 +74,7 @@ Payload
 {
     "root_admin": true,
     "name": "Mike Hawkk",
-    "email": "t@t.com",
+    "email": "joe@advinservers.com",
     "password": null
 }
 ```
@@ -86,7 +86,7 @@ Returns
     "data": {
         "id": 1,
         "name": "Mike Hawkk",
-        "email": "t@t.com",
+        "email": "joe@advinservers.com",
         "email_verified_at": null,
         "root_admin": true,
         "servers_count": 3

@@ -46,7 +46,7 @@ Response
             "current_page": 1,
             "total_pages": 103,
             "links": {
-                "next": "https://us-east.performave.com/api/admin/locations?page=2"
+                "next": "https://advinservers.com/api/admin/locations?page=2"
             }
         }
     }
