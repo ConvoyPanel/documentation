@@ -41,6 +41,10 @@ Convoy uses Docker for everything. The source code comes with a Docker configura
 curl -fsSL https://get.docker.com/ | sh
 ```
 
+::: danger
+Make sure Docker installed correctly with ZERO error messages. Do not proceed if the command above resulted in a non-zero exit code, install Docker manually. For example, if you are using Ubuntu, you can try this official guide from Docker https://docs.docker.com/engine/install/ubuntu/
+:::
+
 ## Download Files
 
 First, create the folder where the panel will be stored in and change your current directory to that newly created folder.
@@ -55,7 +59,7 @@ Once you've created the directory and moved into it, you'll need to download the
 ```sh
 curl -Lo panel.tar.gz https://github.com/convoypanel/panel/releases/latest/download/panel.tar.gz
 tar -xzvf panel.tar.gz
-chmod -R 755 storage/* bootstrap/cache/
+chmod -R o+w storage/* bootstrap/cache/
 ```
 
 ## Installation
@@ -148,6 +152,10 @@ docker compose exec workspace php artisan migrate --force
 ```
 
 ### Preparing for Production
+
+::: danger
+Make sure to check if Convoy is running properly by visiting the panel in your browser before preparing for production as you will not get any debug information in production.
+:::
 
 Go back in your `.env` file you've copied while following the steps for `Environment Configuration`. Edit `APP_ENV` and `APP_DEBUG`. Making the following changes for `APP_ENV` will enable caching in PHP-FPM to serve requests faster. Editing `APP_DEBUG` will disable verbose error messages from emitting (it's also for security purposes as sometimes these verbose logs will dump your environment file).
 
