@@ -32,10 +32,10 @@ Convoy is not free software. Production use of Convoy is prohibited. You will ne
 ## Install Docker
 
 ::: danger
-There's ZERO support from Performave if you don't install Convoy with Docker.
+We do not provide support for methods of deployment other than our official Docker configuration.
 :::
 
-Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything works. It's possible to use cPanel, but it'll be ABSOLUTELY hard. You'll be spending more time debugging configuration errors with cPanel than working at a retail job for enough money to buy a virtual machine to run Convoy smoothly.
+Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything works.
 
 ```sh
 curl -fsSL https://get.docker.com/ | sh
