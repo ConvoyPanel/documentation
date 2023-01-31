@@ -62,6 +62,10 @@ tar -xzvf panel.tar.gz
 chmod -R o+w storage/* bootstrap/cache/
 ```
 
+::: warning
+If you receive file permission errors like in [this picture](https://imgur.com/JsKKctZ.png), try running `docker compose exec workspace chmod -R o+w storage/* bootstrap/cache/`
+:::
+
 ## Installation
 
 Now you have all the files, it's time to configure Convoy.
