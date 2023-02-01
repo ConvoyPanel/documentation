@@ -13,6 +13,7 @@ Convoy is not free software. Production use of Convoy is prohibited. You will ne
 | Debian 11        | :white_check_mark: |       |
 | Ubuntu 20.04     | :white_check_mark: |       |
 | Ubuntu 22.04     | :white_check_mark: |       |
+| Proxmox VE       | :x:                | Docker, which Convoy relies on, doesn't work properly on the host Proxmox system      |
 
 ### Supported Proxmox Versions
 
@@ -33,6 +34,10 @@ Convoy is not free software. Production use of Convoy is prohibited. You will ne
 
 ::: danger
 We do not provide support for methods of deployment other than our official Docker configuration.
+:::
+
+::: danger
+Do not install Convoy/Docker on your host Proxmox system. This includes even containers as it's not complete isolation from the Proxmox OS. If you install Convoy in a KVM container in Proxmox, make sure it doesn't have Cloudinit installed because anything can interfere with Docker's networking.
 :::
 
 Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything works.
