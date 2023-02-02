@@ -424,12 +424,12 @@ Returns no content
 
 ## Suspending a server
 
-**POST** `/api/application/servers/<uuid>/suspend`
+**POST** `/api/application/servers/<uuid>/settings/suspend`
 
 No parameters/body is needed and no content is returned if successful
 
 ## Unsuspending a server
 
-**POST** `/api/application/servers/<uuid>/unsuspend`
+**POST** `/api/application/servers/<uuid>/settings/unsuspend`
 
 No parameters/body is needed and no content is returned if successful
