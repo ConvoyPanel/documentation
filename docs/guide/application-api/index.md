@@ -16,4 +16,5 @@ In your HTTP client, make sure you have the following fields.
 ```js
 Authorization: Bearer your_key_here
 Accept: application/json
+Content-Type: application/json
 ```
