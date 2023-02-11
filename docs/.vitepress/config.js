@@ -5,8 +5,10 @@ export default {
 			{
 				text: 'Deployment',
 				items: [
-					{ text: 'Introduction', link: '/guide/deployment/' },
+					{ text: 'Installation', link: '/guide/deployment/' },
 					{ text: 'NoVNC Service', link: '/guide/deployment/configuring-novnc' },
+					{ text: 'Updating Convoy', link: '/guide/deployment/updating-convoy' },
+					{ text: 'Adding Nodes', link: '/guide/deployment/adding-nodes' },
 				]
 			},
 			{
