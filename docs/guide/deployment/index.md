@@ -8,12 +8,12 @@ Convoy is not free software. Production use of Convoy is prohibited. You will ne
 
 ### Supported Operating Systems
 
-| Operating System |     Supported      | Notes |
-| ---------------- | :----------------: | ----- |
-| Debian 11        | :white_check_mark: |       |
-| Ubuntu 20.04     | :white_check_mark: |       |
-| Ubuntu 22.04     | :white_check_mark: |       |
-| Proxmox VE       | :x:                | Docker, which Convoy relies on, doesn't work properly on the host Proxmox system      |
+| Operating System |     Supported      | Notes                                                                            |
+| ---------------- | :----------------: | -------------------------------------------------------------------------------- |
+| Debian 11        | :white_check_mark: |                                                                                  |
+| Ubuntu 20.04     | :white_check_mark: |                                                                                  |
+| Ubuntu 22.04     | :white_check_mark: |                                                                                  |
+| Proxmox VE       |        :x:         | Docker, which Convoy relies on, doesn't work properly on the host Proxmox system |
 
 ### Supported Proxmox Versions
 
@@ -126,6 +126,10 @@ Awesome! You've completed the configuration step of deploying Convoy. Next, we n
 ```sh
 docker compose up -d
 ```
+
+::: warning
+If you come across errors like "unable to locate package" [like this](https://imgur.com/hE3E7xq.ong), then make sure your host system has updated package lists and is connected to the internet. Also, check if this is an issue with your network or DDoS provider. Combahton DDoS protection is known to have issues.
+:::
 
 ### Installing & Building Dependencies
 
