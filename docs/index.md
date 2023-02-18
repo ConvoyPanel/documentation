@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/performave/convoy
+    - theme: alt
+      text: Discord Community
+      link: https://discord.convoypanel.com/
 
 features:
   - title: It's Fast

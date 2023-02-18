@@ -2,8 +2,8 @@ services:
   workspace:
     image: node:18
     tty: true
-    working_dir: /var/www/documentation
+    working_dir: /var/www
     volumes:
-      - .:/var/www/documentation
+      - .:/var/www
     ports:
       - 42069:42069

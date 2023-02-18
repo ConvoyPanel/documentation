@@ -3,8 +3,9 @@ export default {
 	themeConfig: {
 		sidebar: [
 			{
-				text: 'Deployment',
+				text: 'General',
 				items: [
+					{ text: 'Licensing', link: '/guide/licensing' },
 					{ text: 'Installation', link: '/guide/deployment/' },
 					{ text: 'NoVNC Service', link: '/guide/deployment/configuring-novnc' },
 					{ text: 'Updating Convoy', link: '/guide/deployment/updating-convoy' },
