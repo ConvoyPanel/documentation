@@ -78,15 +78,6 @@ docker compose up -d workspace
 docker compose exec workspace composer install --no-dev --optimize-autoloader
 ```
 
-### Clear Compiled Template Cache
-
-You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for users.
-
-```sh
-docker compose exec workspace php artisan optimize:clear
-docker compose exec workspace php artisan optimize
-```
-
 ### Database Updates
 
 You'll also need to update your database schema for the newest version of Convoy. Running the command below will update the schema of your database.
@@ -94,6 +85,16 @@ You'll also need to update your database schema for the newest version of Convoy
 ```sh
 docker compose up -d database
 docker compose exec workspace php artisan migrate --force
+```
+
+### Clear Compiled Template Cache
+
+You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for users.
+
+```sh
+docker compose up -d redis
+docker compose exec workspace php artisan optimize:clear
+docker compose exec workspace php artisan optimize
 ```
 
 ### Starting the Ignition
