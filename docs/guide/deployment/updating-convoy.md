@@ -14,12 +14,20 @@ Though, don't immediately start backing up right now as your panel is still runn
 
 Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent users from encountering unexpected errors and ensure everything can be updated before users encounter potentially new features.
 
+Use the `secret` option to specify a maintenance mode bypass token, so you can access the queue system dashboard after setting your server into maintenance mode.
+
 ```sh
 cd /var/www/convoy
 
 docker compose up -d workspace
-docker compose exec workspace php artisan down
+docker compose exec workspace php artisan down --secret="1630542a-246b-4b66-afa1-dd72a4c43515"
 ```
+
+After placing Convoy in maintenance mode, you may navigate to the URL matching this token and Convoy will issue a maintenance mode bypass cookie to your browser:
+```
+https://example.com/1630542a-246b-4b66-afa1-dd72a4c43515
+```
+When accessing this hidden route, you will then be redirected to the `/` route of Convoy. Once the cookie has been issued to your browser, you will be able to browse Convoy normally as if it was not in maintenance mode.
 
 ### Check For Running Jobs
 
@@ -58,7 +66,7 @@ chmod -R o+w storage/* bootstrap/cache
 Now that you have the update, proceed to rebuild the Docker containers for Convoy
 
 ```sh
-docker-compose build --no-cache
+docker compose build --no-cache
 ```
 
 ### Update Dependencies
