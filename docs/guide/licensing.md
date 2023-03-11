@@ -20,6 +20,8 @@ Price: $6 per node per month
 ### Partner License
 Price: Name Your Price
 - Everything that's included in enterprise license
+- Must properly represent Convoy with your business/organization.
+  - You're still free to customize the panel with your own branding, but users/clients must be able to discover Convoy easily and reasonably, whether it is a section on your website that tells the user that it's powered by Convoy or a footer text on the Convoy panel also detailing the same message.
 
 ::: info
 Partner licenses are available to only a select few, including those who supported Convoy's development with donations. We are considering having a process for partnership: writing an essay and participating in an interview. However, it's not finalized and is subject to change.
