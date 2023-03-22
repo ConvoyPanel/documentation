@@ -49,3 +49,7 @@ Please don't do that. If you are running a business, your business's reputation 
 Please use Convoy through ethical means because I don't want to spend a lot of time in adding DRM, license-checkers, or obfuscation-they take away time that I can otherwise use on making Convoy more stable, performant, and featureful. In addition, obfuscation is against my original vision of having a panel that's open.
 
 If you get a license, do anything you want with your installation of Convoy. You have the right to use it! Want to add billing? Sure! Want to add a support center? Yep! Want to turn it into a Shopify store that sells cat-themed socks along with servers? Sure... I guess-you have the right to do that anyways!
+
+### Can I buy a lifetime/unrestricted license?
+
+Sorry, I am not offering that type of licenses at the moment for the masses. However, I do hear you guys. I know how irritating it is today to pay for a subscription for absolutely everything, and I will consider different types of licenses (e.g. perpetual licenses but locked to a specific version of Convoy). But please bear with me while the subscription model is $6/node/month. If you are really in need of a discounted license (e.g. you're a new company or you've suffered heavy losses), please let me know and we can work out a solution. I am a person, not some large corporation. We can definitely work together.
