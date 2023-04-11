@@ -84,6 +84,9 @@ You'll also need to update your database schema for the newest version of Convoy
 
 ```sh
 docker compose up -d database
+```
+Now, it will take a moment (5-10 seconds) for the database to initialize from a cold start, so be patient before running the next command.
+```sh
 docker compose exec workspace php artisan migrate --force
 ```
 
