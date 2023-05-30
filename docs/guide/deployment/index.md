@@ -8,12 +8,18 @@ Convoy is not free software. Production use of Convoy is prohibited. You will ne
 
 ### Supported Operating Systems
 
+::: danger
+Do not install Convoy in a container. If you can't install Convoy on bare metal, use KVM but please do not install Convoy in a container.
+:::
+
 | Operating System |     Supported      | Notes                                                                            |
 | ---------------- | :----------------: | -------------------------------------------------------------------------------- |
 | Debian 11        | :x:                | This OS is known to have issues with Convoy, including resource hogging to the point that the system freezes, networking issues, etc.                                                                                 |
 | Ubuntu 20.04     | :white_check_mark: |                                                                                  |
 | Ubuntu 22.04     | :white_check_mark: | The development server for Convoy runs on Ubuntu, so it's known to work                                                                                 |
 | Proxmox VE       |        :x:         | Docker, which Convoy relies on, doesn't work properly on the host Proxmox system |
+
+
 
 ### Supported Proxmox Versions
 
