@@ -70,7 +70,7 @@ Available Request Parameters
 
 ## Fetching a Node
 
-**GET** `/api/application/nodes/<server id>`
+**GET** `/api/application/nodes/<node id>`
 
 ```json
 {
