@@ -4,6 +4,19 @@
 Convoy is not free software. Production use of Convoy is prohibited. You will need an active subscription or explicit permission from Performave.
 :::
 
+## Prerequisites
+
+- Basic knowledge about Docker commands, specifically Docker compose.
+    - `docker compose build`
+    - `docker compose up -d`
+        - add a `--build` flag to combine the first and second command.
+    - `docker compose down`
+    - `docker compose restart`
+    - `docker compose stop <container>`
+- Basic Convoy maintenance commands
+    - Clear cache - `docker compose exec workspace php artisan optimize:clear`
+    - Cache - `docker compose exec workspace php artisan optimize`
+
 ## Requirements
 
 ### Supported Operating Systems
@@ -89,7 +102,7 @@ cp .env.example .env
 
 ### Environment Configuration
 
-First up, let's configure the display information and where this panel will be hosted. To determine what to use for `APP_URL`, first determine where you are hosting this panel. If you are hosting it on your IP address or locally, leave it as `http://localhost`. If you are hosting it on a domain, put `http://your-domain.name`. Additionally, if you want SSL automatically generated, replace `http://` with `https://` and make sure that your domain points to the IP address that's hosting Convoy.
+First up, let's configure the display information and where this panel will be hosted. To determine what to use for `APP_URL`, first determine where you are hosting this panel. If you are hosting it on your IP address or locally, leave it as `http://localhost`. If you are hosting it on a domain, put `http://your-domain.name`. Additionally, if you want SSL automatically generated, replace `http://` with `https://` and make sure that your domain points to the IP address that's hosting Convoy. Please note that automatic SSL does not work with Cloudflare proxy.
 
 ```
 APP_NAME=Convoy
@@ -97,7 +110,7 @@ APP_NAME=Convoy
 APP_URL=http://localhost
 ```
 
-Next, we'll need to configure the database credentials. You can define any alphanumeric values for `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, and `DB_ROOT_PASSWORD`. If you want to use special characters for `DB_PASSWORD` and `DB_ROOT_PASSWORD` for security purposes, wrap the value with double quotation marks. Also, do not define the `DB_USERNAME` field as `root`, this will not work and the database will refuse to start up. Please leave `DB_HOST` as is.
+Next, we'll need to add credentials for the `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`, and `DB_ROOT_PASSWORD` fields. You can define alphanumeric values or have a combination of special characters too. If you want to use  any special characters at all, you **have** to wrap the value in single quotation marks. Also, set the `DB_USERNAME` field anything other than `root` or else your database **won't start**. In addition, you **have** to define a `DB_ROOT_PASSWORD` too for your database to start. Finally, leave `DB_HOST` as is.
 
 ```
 DB_HOST=database
@@ -117,7 +130,7 @@ QUEUE_CONNECTION=redis
 SESSION_DRIVER=redis
 ```
 
-Now, we need to configure the Redis server that'll store key value pairs in its hyper-fast storage. Please leave `REDIS_HOST` and `REDIS_PORT` as is.
+Now, we need to configure the Redis server that'll store key value pairs in its in-memory storage, which provides performance benefits especially if you want low latency requests. Also note again, if you want to use special characters on top of alphanumeric characters, you **have** to wrap the value in single quotation marks. Finally, leave `REDIS_HOST` and `REDIS_PORT` as is.
 
 ```
 REDIS_HOST=redis
