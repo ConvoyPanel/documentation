@@ -1,5 +1,6 @@
 export default {
 	title: 'Convoy',
+	description: 'Open, Modern Cloud Management Panel',
 	themeConfig: {
 		sidebar: [
 			{
