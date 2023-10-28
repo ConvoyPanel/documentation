@@ -26,6 +26,10 @@ export default {
 					{ text: 'Single Sign On', link: '/guide/application-api/single-sign-on' },
 				]
 			}
-		]
+		],
+		footer: {
+      			message: 'Created by Eric Wang',
+      			copyright: 'Copyright © 2022-present Performave'
+    		},
 	}
 }
