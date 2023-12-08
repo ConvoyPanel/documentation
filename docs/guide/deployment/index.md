@@ -100,7 +100,7 @@ First, we'll create a copy a new environment file.
 cp .env.example .env
 ```
 
-For the following section, you need to edit the ".env" file, you just created. To do so, open the file with any text editor (i.e. nano).
+For the following section, you need to edit the ".env" file, you just created. To do so, open the file a text editor of your choice. For this guide, we'll use nano, which is bundled on many Linux-based systems.
 
 ```sh
 nano .env
