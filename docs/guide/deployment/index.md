@@ -100,6 +100,12 @@ First, we'll create a copy a new environment file.
 cp .env.example .env
 ```
 
+For the following section, you need to edit the ".env" file, you just created. To do so, open the file a text editor of your choice. For this guide, we'll use nano, which is bundled on many Linux-based systems.
+
+```sh
+nano .env
+```
+
 ### Environment Configuration
 
 First up, let's configure the display information and where this panel will be hosted. To determine what to use for `APP_URL`, first determine where you are hosting this panel. If you are hosting it on your IP address or locally, leave it as `http://localhost`. If you are hosting it on a domain, put `http://your-domain.name`. Additionally, if you want SSL automatically generated, replace `http://` with `https://` and make sure that your domain points to the IP address that's hosting Convoy. Please note that automatic SSL does not work with Cloudflare proxy.
