@@ -1,20 +1,11 @@
 {
-  "name": "documentation",
-  "version": "1.0.0",
-  "description": "Convoy documentation",
-  "main": "index.js",
-  "license": "MIT",
   "devDependencies": {
-    "@types/node": "^18.6.3",
-    "vitepress": "^1.0.0-alpha.4",
-    "vue": "^3.2.37"
+    "vitepress": "^1.0.0-rc.31",
+    "vue": "^3.3.11"
   },
   "scripts": {
-    "docs:dev": "vitepress dev docs --host --port 42069",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
-  },
-  "dependencies": {
-    "@vue/theme": "^1.1.0"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   }
 }
