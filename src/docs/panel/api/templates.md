@@ -8,6 +8,8 @@ The first depth is the template group. Do not use the template group's UUID for 
 
 The second depth is the template itself. Use the UUID field in the second depth for server creation.
 
+It is important to note that the UUID value for queried template the will be unique for each node even if based within a cluster inside of Proxmox or replicated on different node. This is uniquely generated on template creation.
+
 ```json
 {
     "data": [
