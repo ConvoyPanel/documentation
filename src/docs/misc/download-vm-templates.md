@@ -8,7 +8,7 @@ Templates are premade images, which Convoy duplicate and create VMs off. With Co
 You can grab the script by running following command on your **Proxmox** node (via SSH or in the web terminal)
 
 ```sh
-wget https://github.com/ConvoyPanel/downloader/releases/download/v1.0.1/downloader
+wget https://github.com/ConvoyPanel/downloader/releases/latest/download/downloader
 ```
 
 After getting the downloader, you need to give it rights to execute. Do this with the following command:
