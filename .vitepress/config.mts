@@ -58,6 +58,10 @@ export default defineConfig({
             },
         ],
 
+        editLink: {
+            pattern: 'https://github.com/convoypanel/documentation/edit/master/src/:path'
+        },
+
         footer: {
             message: 'Released under the Business Source License.',
             copyright: 'Copyright © 2020-present Eric Wang and Performave'
