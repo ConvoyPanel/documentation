@@ -58,6 +58,6 @@ Convoy&reg; Copyright &copy; 2020-2023 Eric Wang and Performave
 The panel source code is available under the [Business Source License](https://mariadb.com/bsl-faq-mariadb/). This
 license doesn't mean Convoy is open-source as open-source implies freedom of usage, modification, and distribution.
 However, Convoy places certain limits on usage, which are explained further on
-the [licensing page](/guide/project/licensing).
+the [licensing page](/docs/project/licensing).
 
 
