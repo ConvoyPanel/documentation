@@ -1,5 +1,9 @@
 # Adding a Node
 
+## Convoy Node Location Prerequisite
+
+In order to add a node within Convoy, it is required first to create an entry within the Locations section. This is just a base organizer entry that allows nodes to be organized by physical location. A “Short Code” and “Description” entry are all that are required. This entry is simply a syntax requirement when creating a node.
+
 ## Connection Requirements
 
 - Valid TLS certificate on your Proxmox node
