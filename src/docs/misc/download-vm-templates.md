@@ -32,6 +32,10 @@ Make sure, that your selected location is configured to store VM Disks. Otherwis
 
 You have now installed all templates onto your Proxmox node.
 
+##### Script Template Source Changes
+
+Based within `src/main.rs` is a subsection bracketed within lines 47-72. This is where the template entries are located. You may add or remove these entries to either add partial or custom installation of templates at your discretion. The templates added here are maintained by the developers in a fully compatible manner. There is no guarantee that the addition of templates of an unknown source may not pose a security risk. These templates utilize Cloud-init for most applicable variables applied.
+
 ## Adding templates to Convoy
 
 After you have added a node into Convoy ([Adding a Node](https://convoypanel.com/docs/panel/adding-a-node.html)), you can import the templates to Convoy.
