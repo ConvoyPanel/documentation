@@ -177,7 +177,7 @@ docker compose up -d
 ## Installing Dependencies
 
 ```bash
-docker compose exec workspace bash -c "composer install --no-dev --optimize-autoloader
+docker compose exec workspace bash -c "composer install --no-dev --optimize-autoloader"
 ```
 
 ## Setting an Application Key
