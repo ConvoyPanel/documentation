@@ -81,7 +81,7 @@ chmod -R o+w storage/* bootstrap/cache
 Now that you have the update, proceed to rebuild the Docker containers for Convoy
 
 ```bash
-docker compose up -d workspace --build --no-cache
+docker compose up -d --build --no-cache
 ```
 
 ## Update Dependencies
