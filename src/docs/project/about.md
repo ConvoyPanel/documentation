@@ -38,7 +38,6 @@ and effort in pushing Convoy forward!
 |:--------------|------------------|
 | AmazonAlexa   | amazonalexa.     |
 | CorporalDuntz | corporalduntz    |
-| Mukeshkumar   | Mukeshkumar#4658 |
 
 ## Acknowledgements
 
