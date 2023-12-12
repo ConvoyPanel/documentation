@@ -2,3 +2,7 @@
 .vitepress/cache
 node_modules/
 .idea/
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
