@@ -62,7 +62,9 @@ throughout.
 The panel can't be hosted with hosting providers that utilize Combahton for DDoS protection. When Docker tries to build,
 it can't locate the necessary packages over Combahton's network.
 
-## Install Docker
+## Installation
+
+### Install Docker
 
 Convoy uses Docker for everything. The source code comes with a Docker configuration that will ensure that everything
 works.
@@ -76,7 +78,7 @@ Please ensure your installation of Docker succeeded using the command above. Oth
 visit [Docker](https://docker.com) and find a guide for your operating system to manually install Docker.
 :::
 
-## Download Files
+### Download Files
 
 First, create the folder where the panel will be stored in and change your current directory to that newly created
 folder.
@@ -100,7 +102,7 @@ If you receive file permission errors like in [this picture](https://imgur.com/J
 running `docker compose exec workspace chmod -R o+w storage/* bootstrap/cache/`
 :::
 
-## Configuration
+### Configuration
 
 First, we'll create a copy a new environment file.
 
@@ -119,9 +121,9 @@ nvim .env
 vim .env
 ```
 
-## Configuring Your Environment File
+### Configuring Your Environment File
 
-### Accessibility
+#### Accessibility
 
 First up, let's declare where this panel will be hosted. You'll need to edit the `APP_URL` variable with a URL that your
 users can access. If you don't have a domain, you can host directly from your IP address by leaving it
@@ -137,7 +139,7 @@ disabled.
 APP_URL=http://localhost
 ```
 
-### Database
+#### Database
 
 Next, we need to configure the database credentials for
 
@@ -156,7 +158,7 @@ DB_PASSWORD="I can use special characters here!"
 DB_ROOT_PASSWORD=im_alphanumeric
 ```
 
-### Cache Server
+#### Cache Server
 
 Now we need to configure the cache server, which is essential to providing low-latency requests. Please supply a
 password for the `REDIS_PASSWORD` variable. Again, if you need to use special characters, please wrap them in double
@@ -166,7 +168,7 @@ quotation marks.
 REDIS_PASSWORD=a_secure_password
 ```
 
-## Docker Build Step
+### Docker Build Step
 
 Next, we need to build the Docker images that'll run Convoy.
 
@@ -174,13 +176,13 @@ Next, we need to build the Docker images that'll run Convoy.
 docker compose up -d
 ```
 
-## Installing Dependencies
+### Installing Dependencies
 
 ```bash
 docker compose exec workspace bash -c "composer install --no-dev --optimize-autoloader
 ```
 
-## Setting an Application Key
+### Setting an Application Key
 
 After installing the dependencies, you need to also set an application key `APP_KEY` in your environment file. This key
 is used to hash your users' password and other cryptographic functions. It's wise to keep this key protected and backed
@@ -191,7 +193,7 @@ docker compose exec workspace bash -c "php artisan key:generate --force && \
                                        php artisan optimize"
 ```
 
-## Database Initialization
+### Database Initialization
 
 Now we need to migrate Convoy's database structure to your database. The command below may take a moment to complete.
 
@@ -199,7 +201,7 @@ Now we need to migrate Convoy's database structure to your database. The command
 docker compose exec workspace php artisan migrate --force
 ```
 
-## Preparing for Production
+### Preparing for Production
 
 After you've confirmed that your installation of Convoy is accessible, you'll need to edit your environment file again.
 Update the `APP_ENV` and `APP_DEBUG` variables like in the following snippet:
@@ -216,7 +218,7 @@ docker compose down
 docker compose up -d --build --no-cache
 ```
 
-## Adding a User
+### Adding a User
 
 Execute the command below and follow the steps that appear in your terminal.
 
