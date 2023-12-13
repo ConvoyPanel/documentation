@@ -43,5 +43,5 @@ You may send an email to [eric@performave.com](mailto:eric@performave.com) or me
 
 ### Community Support
 
-You may send your question in the [Discord community](https://discord.convoypanel.com).
+You may send your question in the [forum](https://github.com/ConvoyPanel/panel/discussions) or [Discord community](https://discord.convoypanel.com).
 

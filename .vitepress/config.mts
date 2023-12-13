@@ -12,7 +12,13 @@ export default defineConfig({
         nav: [
             { text: 'Pricing', link: '/docs/project/licensing' },
             { text: 'Documentation', link: '/docs/project/introduction' },
-            { text: 'Community', link: 'https://discord.convoypanel.com' },
+            {
+                text: 'Community',
+                items: [
+                    { text: 'Forum', link: 'https://github.com/ConvoyPanel/panel/discussions' },
+                    { text: 'Discord', link: 'https://discord.convoypanel.com' },
+                ],
+            },
             { text: 'Github', link: 'https://github.com/convoypanel/panel' },
         ],
 
@@ -23,6 +29,10 @@ export default defineConfig({
                     { text: 'Introduction', link: '/docs/project/introduction' },
                     { text: 'About', link: '/docs/project/about' },
                     { text: 'Licensing', link: '/docs/project/licensing' },
+                    {
+                        text: 'Resources',
+                        link: 'https://github.com/ConvoyPanel/panel/discussions/categories/resources',
+                    },
                     { text: 'Support', link: '/docs/project/support' },
                     { text: 'Report License Abuse', link: '/docs/project/report-license-abuse' },
                     { text: 'Subscribe', link: 'https://console.convoypanel.com' },
