@@ -36,6 +36,7 @@ export default defineConfig({
                     {text: 'Updating the Panel', link: '/docs/panel/updating-the-panel'},
                     {text: 'Enabling Terminal Access', link: '/docs/panel/enabling-terminal-access'},
                     {text: 'Adding a Node', link: '/docs/panel/adding-a-node'},
+                    {text: 'Integrations', link: '/docs/panel/integrations'},
                     {
                         text: 'Application API', collapsed: true, items: [
                             {text: 'Getting Started', link: '/docs/panel/api/getting-started'},
