@@ -34,10 +34,11 @@ and effort in pushing Convoy forward!
 
 ### Documentation Committee
 
-| Name          | Discord Name     |
-|:--------------|------------------|
-| AmazonAlexa   | amazonalexa.     |
-| CorporalDuntz | corporalduntz    |
+| Name          | Discord Name  |
+|:--------------|---------------|
+| AmazonAlexa   | amazonalexa.  |
+| CorporalDuntz | corporalduntz |
+| adekabang     | adekabang     |
 
 ## Acknowledgements
 
