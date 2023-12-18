@@ -56,6 +56,7 @@ export default defineConfig({
                             { text: 'Users', link: '/docs/panel/api/users' },
                             { text: 'Templates', link: '/docs/panel/api/templates' },
                             { text: 'Single Sign On', link: '/docs/panel/api/single-sign-on' },
+                            { text: 'IPAM', link: '/docs/panel/api/ipam' },
                         ],
                     },
                 ],
