@@ -1,7 +1,7 @@
 # Updating the Panel
 
-This documentation covers the process for upgrading within the `3.x` series of releases. This means updating
-from&#8212;for example&#8212;`3.1.0` to `3.2.0`.
+This documentation covers the process for upgrading within the `4.x` series of releases or from `3.x` to `4.x`. This means updating
+from&#8212;for example&#8212;`4.0.0` to `4.1.0` or from `3.10.0` to `4.1.0`.
 
 ## Before You Begin
 
