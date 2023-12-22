@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { fileURLToPath } from 'node:url'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -42,21 +43,52 @@ export default defineConfig({
             {
                 text: 'Panel',
                 items: [
-                    { text: 'Getting Started', link: '/docs/panel/getting-started' },
-                    { text: 'Updating the Panel', link: '/docs/panel/updating-the-panel' },
-                    { text: 'Enabling Terminal Access', link: '/docs/panel/enabling-terminal-access' },
-                    { text: 'Adding a Node', link: '/docs/panel/adding-a-node' },
-                    { text: 'Integrations', link: '/docs/panel/integrations' },
+
                     {
-                        text: 'Application API', collapsed: true, items: [
-                            { text: 'Getting Started', link: '/docs/panel/api/getting-started' },
-                            { text: 'Locations', link: '/docs/panel/api/locations' },
-                            { text: 'Nodes', link: '/docs/panel/api/nodes' },
-                            { text: 'Servers', link: '/docs/panel/api/servers' },
-                            { text: 'Users', link: '/docs/panel/api/users' },
-                            { text: 'Templates', link: '/docs/panel/api/templates' },
-                            { text: 'Single Sign On', link: '/docs/panel/api/single-sign-on' },
-                            { text: 'IPAM', link: '/docs/panel/api/ipam' },
+                        text: 'v4 (upcoming release)',
+                        collapsed: true,
+                        items: [
+                            { text: 'Getting Started', link: '/docs/panel/v4/getting-started' },
+                            { text: 'Updating the Panel', link: '/docs/panel/v4/updating-the-panel' },
+                            { text: 'Enabling Terminal Access', link: '/docs/panel/v4/enabling-terminal-access' },
+                            { text: 'Adding a Node', link: '/docs/panel/v4/adding-a-node' },
+                            { text: 'Integrations', link: '/docs/panel/v4/integrations' },
+                            {
+                                text: 'Application API', collapsed: true, items: [
+                                    { text: 'Getting Started', link: '/docs/panel/v4/api/getting-started' },
+                                    { text: 'Locations', link: '/docs/panel/v4/api/locations' },
+                                    { text: 'Nodes', link: '/docs/panel/v4/api/nodes' },
+                                    { text: 'Node Addresses', link: '/docs/panel/v4/api/node-addresses' },
+                                    { text: 'IPAM', link: '/docs/panel/v4/api/ipam' },
+                                    { text: 'Servers', link: '/docs/panel/v4/api/servers' },
+                                    { text: 'Users', link: '/docs/panel/v4/api/users' },
+                                    { text: 'Templates', link: '/docs/panel/v4/api/templates' },
+                                    { text: 'Single Sign On', link: '/docs/panel/v4/api/single-sign-on' },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        text: 'v3',
+                        collapsed: false,
+                        items: [
+                            { text: 'Getting Started', link: '/docs/panel/v3/getting-started' },
+                            { text: 'Updating the Panel', link: '/docs/panel/v3/updating-the-panel' },
+                            { text: 'Enabling Terminal Access', link: '/docs/panel/v3/enabling-terminal-access' },
+                            { text: 'Adding a Node', link: '/docs/panel/v3/adding-a-node' },
+                            { text: 'Integrations', link: '/docs/panel/v3/integrations' },
+                            {
+                                text: 'Application API', collapsed: true, items: [
+                                    { text: 'Getting Started', link: '/docs/panel/v3/api/getting-started' },
+                                    { text: 'Locations', link: '/docs/panel/v3/api/locations' },
+                                    { text: 'Nodes', link: '/docs/panel/v3/api/nodes' },
+                                    { text: 'Addresses', link: '/docs/panel/v3/api/addresses' },
+                                    { text: 'Servers', link: '/docs/panel/v3/api/servers' },
+                                    { text: 'Users', link: '/docs/panel/v3/api/users' },
+                                    { text: 'Templates', link: '/docs/panel/v3/api/templates' },
+                                    { text: 'Single Sign On', link: '/docs/panel/v3/api/single-sign-on' },
+                                ],
+                            },
                         ],
                     },
                 ],
@@ -85,4 +117,16 @@ export default defineConfig({
     },
     lastUpdated: true,
     srcDir: './src',
+    vite: {
+        resolve: {
+            alias: [
+                {
+                    find: /^.*\/VPSidebar\.vue$/,
+                    replacement: fileURLToPath(
+                        new URL('./theme/Sidebar.vue', import.meta.url),
+                    ),
+                },
+            ],
+        },
+    },
 })
