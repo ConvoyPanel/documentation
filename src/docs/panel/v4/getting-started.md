@@ -215,7 +215,7 @@ Then, rebuild the Dockerfiles and fully restart the containers.
 
 ```bash
 docker compose down
-docker compose up -d --build --no-cache
+docker compose up -d --build
 ```
 
 ### Adding a User
