@@ -244,7 +244,7 @@ and reset the cache.
 
 ```bash
 docker compose down
-docker compose up -d --build --no-cache
+docker compose up -d --build
 docker compose exec workspace bash -c "php artisan optimize:clear && \
                                        php artisan optimize"
 ```
