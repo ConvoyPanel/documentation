@@ -28,7 +28,7 @@ You will be prompted to input the `Storage Volume`: This is the name of the volu
 Make sure, that your selected location is configured to store VM Disks. Otherwise, the templates will not install correctly.
 :::
 
-![Screenshot of storages in Proxmox](/assets/images/choosing_storage.png)
+![Screenshot of storages in Proxmox](/assets/images/choosing-storage.png)
 
 You have now installed all templates onto your Proxmox node.
 
@@ -49,4 +49,4 @@ After creating a group, we can add the templates into the group. The `Display Na
 
 In our case, this is how it can look like, if we want to group multiple versions of the same OS together.
 
-![Screenshot of an example template group](/assets/images/example_template_group.png)
+![Screenshot of an example template group](/assets/images/example-template-group.png)
