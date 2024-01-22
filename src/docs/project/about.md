@@ -50,6 +50,7 @@ These organizations and individuals helped support Convoy's development.
 | Kjartann                                       | Donated $250 during early development                                                                                |
 | [HeavyNode](https://heavynode.com)             | Assisted in the development of [Convoy terminal](https://github.com/convoypanel/coterm) and helped make it possible. |
 | [Pterodactyl Panel](https://pterodactyl.io)    | Served as an example for project structure and provided plenty of early inspiration.                                 |
+| [Halvex Inc.](https://halvex.net/)             | Designed logos, banners, and other graphic arts for us for free.                                                     |
 
 ## License
 
