@@ -45,8 +45,8 @@ export default defineConfig({
                 items: [
 
                     {
-                        text: 'v4 (upcoming release)',
-                        collapsed: true,
+                        text: 'v4',
+                        collapsed: false,
                         items: [
                             { text: 'Getting Started', link: '/docs/panel/v4/getting-started' },
                             { text: 'Updating the Panel', link: '/docs/panel/v4/updating-the-panel' },
@@ -69,8 +69,8 @@ export default defineConfig({
                         ],
                     },
                     {
-                        text: 'v3',
-                        collapsed: false,
+                        text: 'v3 (EOL)',
+                        collapsed: true,
                         items: [
                             { text: 'Getting Started', link: '/docs/panel/v3/getting-started' },
                             { text: 'Updating the Panel', link: '/docs/panel/v3/updating-the-panel' },
