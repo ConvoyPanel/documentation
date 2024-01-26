@@ -147,7 +147,6 @@ Next, we need to configure the database credentials for
 - `DB_USERNAME`
     - This value cannot be `root`
 - `DB_PASSWORD`
-- `DB_ROOT_PASSWORD`
 
 If your password contains special characters, please wrap your value with double quotation marks.
 
@@ -155,7 +154,6 @@ If your password contains special characters, please wrap your value with double
 DB_DATABASE=convoy
 DB_USERNAME=convoy_user
 DB_PASSWORD="I can use special characters here!"
-DB_ROOT_PASSWORD=im_alphanumeric
 ```
 
 #### Cache Server
