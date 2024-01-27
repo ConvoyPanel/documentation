@@ -1,5 +1,9 @@
 # Coterm
 
+<p align="center">
+  <img src="https://github.com/ConvoyPanel/coterm/assets/37554696/a79f7746-1ff0-4b7b-af2a-723f0a8f7de8" alt="Coterm banner" />
+</p>
+
 [Convoy terminal](https://github.com/ConvoyPanel/coterm) is a console proxy for Convoy that hides the Proxmox origin IP
 address. Written with Rust and utilizing Svelte, Coterm is built for performance, and every millisecond counts.
 
@@ -31,3 +35,16 @@ Please open the `.env` environment file in your editor of choice and populate th
 
 If you need to modify the Caddy web server configuration, please refer to
 the [Caddyfile documentation](https://caddyserver.com/docs/caddyfile).
+
+## Updating Coterm
+
+### Compose file
+
+To update Coterm to the latest version, simply run `docker compose pull`, `docker compose down`,
+and `docker compose up -d`.
+
+### Docker run command
+
+To update Coterm to the latest version, run `docker pull ghcr.io/convoypanel/coterm:latest`. Then, stop the existing
+container with `docker stop <container id>` (you can find the container id by running `docker ps`). Finally, run the new
+container with the same command you used to start it.
