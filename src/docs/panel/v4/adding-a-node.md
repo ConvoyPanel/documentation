@@ -3,9 +3,8 @@
 ## Connection Requirements
 
 - Valid TLS certificate on your Proxmox node
-  - Convoy verifies TLS certificates with a trusted certificate authority in production mode&#8212;that is `APP_ENV=production` in your environment file.
   - If you don't have a trusted certificate, you can generate one with Let's Encrypt in [this guide](https://www.smarthomebeginner.com/proxmox-ssl-certificate-with-letsencrypt/).
-  - Alternatively, you can trust your Proxmox self-signed certificate in your system's keychain.
+  - We heavily discourage against disabling TLS verification because enables man-in-the-middle attacks.
 
 ## Generating a Proxmox API Token
 
@@ -29,7 +28,8 @@ Before adding a new Node, you must create a location for your node. On the Admin
 With your API token, navigate to Convoy's nodes page in the administration area and add a new node. Click the `Create Node` button and fill in the information required.
 - `Display Name` : Type any name for identifying your node 
 - `Location Group` : Choose the location you already created before
-- `Node Name In Proxmox`: Type the same name as your node name in Promox
+- `Node Name In Proxmox`: Type the same name as your node name in Proxmox
+- `Verify TLS Certificates`: Check this if you have a valid TLS certificate on your Proxmox node
 - `Token ID`: Paste from your Proxmox user page
 - `Secret`: Paste from your Proxmox user page
 - `FQDN`: Type your Proxmox IP or FQDN without http/https
