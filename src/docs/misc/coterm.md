@@ -48,3 +48,31 @@ and `docker compose up -d`.
 To update Coterm to the latest version, run `docker pull ghcr.io/convoypanel/coterm:latest`. Then, stop the existing
 container with `docker stop <container id>` (you can find the container id by running `docker ps`). Finally, run the new
 container with the same command you used to start it.
+
+## FAQ
+
+### Invalid TLS Certificates
+
+::: danger
+This option makes your Coterm vulnerable to man-in-the-middle attacks. Only use this option if you know what you are
+doing. It's also pretty irresponsible to use this option in production, especially as a hosting provider.
+:::
+
+If you are using a self-signed certificate that isn't trusted in the Docker container that's running Coterm, you will
+get
+TLS verification errors. Although very insecure, you can set this option in your environment file to disable TLS
+
+```ini
+DANGEROUS_DISABLE_TLS_VERIFICATION=true
+```
+
+or use this flag on your Docker run command
+
+```sh
+-e DANGEROUS_DISABLE_TLS_VERIFICATION=true
+```
+
+After setting this option, you will need to restart your Coterm container for the changes to take effect. You can check
+when you see this message in the logs below.
+
+![Console message indicating that Coterm TLS verification is disabled](/assets/images/coterm-console-indicating-tls-verify-disabled.png)
