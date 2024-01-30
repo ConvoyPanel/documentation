@@ -17,8 +17,18 @@ Stuck on an issue related to Convoy? Here's how you can get support.
 
 The log collector utility below will output a link. Make sure you copy the link and submit it with your support request.
 
+##### X86
+
 ```bash
-wget https://github.com/ConvoyPanel/log-collector/releases/latest/download/log_collector
+wget https://github.com/ConvoyPanel/log-collector/releases/latest/download/log_collector_x86
+chmod +x ./log_collector
+./log_collector
+```
+
+##### ARM (doesn't mean we officially support ARM!)
+
+```bash
+wget https://github.com/ConvoyPanel/log-collector/releases/latest/download/log_collector_arm
 chmod +x ./log_collector
 ./log_collector
 ```
