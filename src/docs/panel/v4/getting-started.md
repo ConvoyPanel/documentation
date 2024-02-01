@@ -148,18 +148,18 @@ Next, we need to configure the database credentials for
     - This value cannot be `root`
 - `DB_PASSWORD`
 
-If your password contains special characters, please wrap your value with double quotation marks.
+If your password contains special characters, please wrap your value with single quotation marks.
 
 ```ini
 DB_DATABASE=convoy
 DB_USERNAME=convoy_user
-DB_PASSWORD="I can use special characters here!"
+DB_PASSWORD='I can use special characters here!'
 ```
 
 #### Cache Server
 
 Now we need to configure the cache server, which is essential to providing low-latency requests. Please supply a
-password for the `REDIS_PASSWORD` variable. Again, if you need to use special characters, please wrap them in double
+password for the `REDIS_PASSWORD` variable. Again, if you need to use special characters, please wrap them in single
 quotation marks.
 
 ```ini
