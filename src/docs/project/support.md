@@ -21,16 +21,16 @@ The log collector utility below will output a link. Make sure you copy the link 
 
 ```bash
 wget https://github.com/ConvoyPanel/log-collector/releases/latest/download/log_collector_x86
-chmod +x ./log_collector
-./log_collector
+chmod +x ./log_collector_x86
+./log_collector_x86
 ```
 
 ##### ARM (doesn't mean we officially support ARM!)
 
 ```bash
 wget https://github.com/ConvoyPanel/log-collector/releases/latest/download/log_collector_arm
-chmod +x ./log_collector
-./log_collector
+chmod +x ./log_collector_arm
+./log_collector_arm
 ```
 
 ### Don't's
