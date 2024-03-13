@@ -30,8 +30,8 @@ The panel cannot be installed in a container due to limitations with Docker.
 
 | Operating System       |     Supported      | Notes                                                                                                                                                                                    |
 |------------------------|:------------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Debian 11 and later    | :white_check_mark: |                                                                                                                                                                                          |
-| Ubuntu 20.04 and later | :white_check_mark: | Safe bet because this was Convoy's development environment.                                                                                                                              |
+| Debian 11 and newer    | :white_check_mark: |                                                                                                                                                                                          |
+| Ubuntu 20.04 and newer | :white_check_mark: | Safe bet because this was Convoy's development environment.                                                                                                                              |
 | Proxmox VE             |        :x:         | Hard no because Proxmox's networking setup interferes with Docker's network, leading to confusing network errors in Convoy. However, you may install the panel in a KVM virtual machine. |
 
 ### Proxmox VE
@@ -47,7 +47,7 @@ throughout.
 | VE Version         | Panel Version    |
 |--------------------|------------------|
 | 7.2-7 &rarr; 7.3-4 | v1.x &rarr; v2.x |
-| 7.3-4 and later    | v3.x and later   |
+| 7.3-4 and newer    | v3.x and newer   |
 
 ### Minimum Hardware Requirements
 
@@ -55,7 +55,7 @@ throughout.
 |--------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | CPU    | 2 Core | Non-x86 architectures aren't supported because the MySQL image in our deployment doesn't support other platforms. You may swap it out for another database or use [Rosetta 2](https://en.wikipedia.org/wiki/Rosetta_(software)) on Apple Silicon, but we won't provide support for non-standard installations. |
 | Memory | 4 GiB  | You may use swap, but it may cause degraded performance.                                                                                                                                                                                                                                                       |
-| Disk   | 10 GiB |                                                                                                                                                                                                                                                                                                                |
+| Disk   | 30 GiB |                                                                                                                                                                                                                                                                                                                |
 
 ### Odd Exceptions
 
