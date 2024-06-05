@@ -11,6 +11,7 @@ export default defineConfig({
         // https://vitepress.dev/reference/default-theme-config
         logo: '/logo.svg',
         nav: [
+            { text: 'Demo', link: '/docs/panel/demo' },
             { text: 'Pricing', link: '/docs/project/licensing' },
             { text: 'Documentation', link: '/docs/project/introduction' },
             {

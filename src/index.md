@@ -16,6 +16,9 @@ hero:
     - theme: alt
       text: Subscribe
       link: https://console.convoypanel.com
+    - theme: alt
+      text: Demo
+      link: /docs/panel/demo
   image:
     src: /assets/images/homepage-header-photo.png
     alt: Screenshot of Convoy dashboard with funny reactions from people who are surprised at how great Convoy looks.
