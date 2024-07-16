@@ -11,7 +11,7 @@ We also have a downloader script for ARM servers (this does not mean that convoy
 :::
 
 ```sh
-wget https://github.com/ConvoyPanel/downloader/releases/download/v2.0.1/downloader_x86
+wget https://github.com/ConvoyPanel/downloader/releases/latest/download/downloader_x86
 ```
 
 After getting the downloader, you need to give it rights to execute. Do this with the following command:
