@@ -59,8 +59,7 @@ throughout.
 
 ### Odd Exceptions
 
-The panel can't be hosted with hosting providers that utilize Combahton for DDoS protection. When Docker tries to build,
-it can't locate the necessary packages over Combahton's network.
+You may experience issues on hosting providers utilizing Combahton for DDoS protection. When Docker tries to build, it sometimes cannot locate the necessary packages over Combahton's network.
 
 ## Installation
 
