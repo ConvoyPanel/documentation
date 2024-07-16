@@ -6,9 +6,6 @@ Templates are premade images, which Convoy duplicate and create VMs off. With Co
 
 You can grab the script by running following command on your **Proxmox** node (via SSH or in the web terminal)
 
-::: tip Tip
-We also have a downloader script for ARM servers (this does not mean that convoy supports ARM!). To use the ARM downloader, run the following commands with `downloader_arm` instead of `downloader_x86`
-:::
 
 ```sh
 wget https://github.com/ConvoyPanel/downloader/releases/latest/download/downloader_x86
