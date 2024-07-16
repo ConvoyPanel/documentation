@@ -6,20 +6,21 @@ Templates are premade images, which Convoy duplicate and create VMs off. With Co
 
 You can grab the script by running following command on your **Proxmox** node (via SSH or in the web terminal)
 
+
 ```sh
-wget https://github.com/ConvoyPanel/downloader/releases/latest/download/downloader
+wget https://github.com/ConvoyPanel/downloader/releases/latest/download/downloader_x86
 ```
 
 After getting the downloader, you need to give it rights to execute. Do this with the following command:
 
 ```sh
-chmod +x downloader
+chmod +x downloader_x86
 ```
 
 Now, you are ready to run the downloader and install the templates to your Proxmox node. To run the downloader, execute following command:
 
 ```sh
-./downloader
+./downloader_x86
 ```
 
 You will be prompted to input the `Storage Volume`: This is the name of the volume, where your template servers will be saved to.
