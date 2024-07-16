@@ -53,14 +53,13 @@ throughout.
 
 |        |        | Notes                                                                                                                                                                                                                                                                                                          |
 |--------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CPU    | 2 Core | Non-x86 architectures aren't supported because the MySQL image in our deployment doesn't support other platforms. You may swap it out for another database or use [Rosetta 2](https://en.wikipedia.org/wiki/Rosetta_(software)) on Apple Silicon, but we won't provide support for non-standard installations. |
+| CPU    | 2 Core | Non-x86 architectures aren't supported because the MySQL image in our deployment doesn't support other platforms. You may swap it out for another database or use [Rosetta 2](https://en.wikipedia.org/wiki/Rosetta_(software)) on Apple Silicon, but we won't provide support for non-standard installations. Also make sure, that your virtual CPU supports `x86-64-v2`. |
 | Memory | 4 GiB  | You may use swap, but it may cause degraded performance.                                                                                                                                                                                                                                                       |
 | Disk   | 30 GiB |                                                                                                                                                                                                                                                                                                                |
 
 ### Odd Exceptions
 
-The panel can't be hosted with hosting providers that utilize Combahton for DDoS protection. When Docker tries to build,
-it can't locate the necessary packages over Combahton's network.
+You may experience issues on hosting providers utilizing Combahton for DDoS protection. When Docker tries to build, it sometimes cannot locate the necessary packages over Combahton's network.
 
 ## Installation
 
