@@ -2,9 +2,6 @@
 
 IPAM stands for IP address management and needs to be configured if your VMs within convoy need to have IP addresses.
 
-## Compatibility
-This guide only works with v4 of Convoy.
-
 ## Creating an IP Pool
 
 Assuming you have a Node configured ([Adding a Node](https://convoypanel.com/docs/panel/v4/adding-a-node.html)), in the admin interface, select the `IPAM` tab. 
