@@ -53,6 +53,7 @@ export default defineConfig({
                             { text: 'Updating the Panel', link: '/docs/panel/v4/updating-the-panel' },
                             { text: 'Enabling Terminal Access', link: '/docs/panel/v4/enabling-terminal-access' },
                             { text: 'Adding a Node', link: '/docs/panel/v4/adding-a-node' },
+                            { text: 'Configuring IPAM', link: '/docs/panel/v4/configuring-ipam' },
                             { text: 'Integrations', link: '/docs/panel/v4/integrations' },
                             {
                                 text: 'Application API', collapsed: true, items: [
