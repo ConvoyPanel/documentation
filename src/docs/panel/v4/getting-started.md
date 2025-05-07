@@ -57,10 +57,6 @@ throughout.
 | Memory | 4 GiB  | You may use swap, but it may cause degraded performance.                                                                                                                                                                                                                                                       |
 | Disk   | 30 GiB |                                                                                                                                                                                                                                                                                                                |
 
-### Odd Exceptions
-
-You may experience issues on hosting providers utilizing Combahton for DDoS protection. When Docker tries to build, it sometimes cannot locate the necessary packages over Combahton's network.
-
 ## Installation
 
 ### Install Docker
