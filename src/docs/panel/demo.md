@@ -6,7 +6,7 @@ so please be respectful of the resources available.
 
 ## Credits
 
-Thanks to `DeathInTokio` on Discord for providing the demo instance!
+Thank you, Alexa (Discord: `staalexa`) and Leon (Discord: `1157655236014506006`) over at [Host-Zentrum](https://www.host-zentrum.de/) for providing the demo instance!
 
 ## Credentials
 

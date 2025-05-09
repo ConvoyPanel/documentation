@@ -51,6 +51,7 @@ These organizations and individuals helped support Convoy's development.
 | [HeavyNode](https://heavynode.com)             | Assisted in the development of [Convoy terminal](https://github.com/convoypanel/coterm) and helped make it possible. |
 | [Pterodactyl Panel](https://pterodactyl.io)    | Served as an example for project structure and provided plenty of early inspiration.                                 |
 | [Halvex Inc.](https://halvex.net/)             | Designed logos, banners, and other graphic arts for us for free.                                                     |
+| DeathInTokio                                   | Dedication of time and resources to hosting a demo instance                                                          |
 
 ## License
 
