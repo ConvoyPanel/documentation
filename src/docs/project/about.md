@@ -36,7 +36,7 @@ and effort in pushing Convoy forward!
 
 | Name          | Discord Name  |
 |:--------------|---------------|
-| AmazonAlexa   | amazonalexa.  |
+| Alexa         | staalexa      |
 | CorporalDuntz | corporalduntz |
 | adekabang     | adekabang     |
 
@@ -47,7 +47,7 @@ These organizations and individuals helped support Convoy's development.
 | Name                                           |                                                                                                                      |
 |------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
 | [Advin Services LLC](https://advinservers.com) | Donated several development servers to support early development when there were little development resources.       |
-| Kjartann                                       | Donated $250 during early development                                                                                |
+| lily                                           | Donated $250 during early development                                                                                |
 | [HeavyNode](https://heavynode.com)             | Assisted in the development of [Convoy terminal](https://github.com/convoypanel/coterm) and helped make it possible. |
 | [Pterodactyl Panel](https://pterodactyl.io)    | Served as an example for project structure and provided plenty of early inspiration.                                 |
 | [Halvex Inc.](https://halvex.net/)             | Designed logos, banners, and other graphic arts for us for free.                                                     |
