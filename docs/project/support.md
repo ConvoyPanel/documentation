@@ -8,10 +8,10 @@ Stuck on an issue related to Convoy? Here's how you can get support.
 
 |                    |                                                                    |
 |--------------------|--------------------------------------------------------------------|
-| :white_check_mark: | Explain the behavior that's occurring and the behavior you expect. |
-| :white_check_mark: | Provide steps to reproduce your issue.                             |
-| :white_check_mark: | Screenshots, if applicable                                         |
-| :white_check_mark: | Provide panel logs with the utility below.                         |
+| ✅                  | Explain the behavior that's occurring and the behavior you expect. |
+| ✅                  | Provide steps to reproduce your issue.                             |
+| ✅                  | Screenshots, if applicable                                         |
+| ✅                  | Provide panel logs with the utility below.                         |
 
 #### Collecting Panel Logs
 
@@ -37,17 +37,16 @@ chmod +x ./log_collector_arm
 
 |     |                                                                                                               |
 |-----|---------------------------------------------------------------------------------------------------------------|
-| :x: | [Asking to ask a question or just sending "hi."](https://nohello.net/en/) You will be ignored.                |
-| :x: | Putting in low effort in asking your question. We're putting in effort to help out, so we expect it the same. |
-| :x: | Asking for remote support (e.g., over SSH)                                                                    |
+| ❌   | [Asking to ask a question or just sending "hi."](https://nohello.net/en/) You will be ignored.                |
+| ❌   | Putting in low effort in asking your question. We're putting in effort to help out, so we expect it the same. |
+| ❌   | Asking for remote support (e.g., over SSH)                                                                    |
 
 ## Support Routes
 
 ### Official Support
 
-::: tip
-Paying customers have priority over non-paying users. 
-:::
+> [!TIP]
+> Paying customers have priority over non-paying users.
 
 You may send an email to [eric@performave.com](mailto:eric@performave.com) or message a developer on the [Discord community](https://discord.convoypanel.com).
 

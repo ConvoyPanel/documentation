@@ -24,15 +24,14 @@ install Convoy on a system that's not listed here. However, we won't provide any
 If you find that a system not listed on here that works,
 please [let us know](https://github.com/ConvoyPanel/documentation/issues/new) and we can add it to the list.
 
-::: warning
-The panel cannot be installed in a container due to limitations with Docker.
-:::
+> [!WARNING]
+> The panel cannot be installed in a container due to limitations with Docker.
 
 | Operating System       |     Supported      | Notes                                                                                                                                                                                    |
 |------------------------|:------------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Debian 11 and later    | :white_check_mark: |                                                                                                                                                                                          |
-| Ubuntu 20.04 and later | :white_check_mark: | Safe bet because this was Convoy's development environment.                                                                                                                              |
-| Proxmox VE             |        :x:         | Hard no because Proxmox's networking setup interferes with Docker's network, leading to confusing network errors in Convoy. However, you may install the panel in a KVM virtual machine. |
+| Debian 11 and newer    | ✅                  |                                                                                                                                                                                          |
+| Ubuntu 20.04 and newer | ✅                  | Safe bet because this was Convoy's development environment.                                                                                                                              |
+| Proxmox VE             |         ❌          | Hard no because Proxmox's networking setup interferes with Docker's network, leading to confusing network errors in Convoy. However, you may install the panel in a KVM virtual machine. |
 
 ### Proxmox VE
 
@@ -47,20 +46,15 @@ throughout.
 | VE Version         | Panel Version    |
 |--------------------|------------------|
 | 7.2-7 &rarr; 7.3-4 | v1.x &rarr; v2.x |
-| 7.3-4 and later    | v3.x and later   |
+| 7.3-4 and newer    | v3.x and newer   |
 
 ### Minimum Hardware Requirements
 
 |        |        | Notes                                                                                                                                                                                                                                                                                                          |
 |--------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CPU    | 1 Core | Non-x86 architectures aren't supported because the MySQL image in our deployment doesn't support other platforms. You may swap it out for another database or use [Rosetta 2](https://en.wikipedia.org/wiki/Rosetta_(software)) on Apple Silicon, but we won't provide support for non-standard installations. |
+| CPU    | 2 Core | Non-x86 architectures aren't supported because the MySQL image in our deployment doesn't support other platforms. You may swap it out for another database or use [Rosetta 2](https://en.wikipedia.org/wiki/Rosetta_(software)) on Apple Silicon, but we won't provide support for non-standard installations. Also make sure, that your virtual CPU supports `x86-64-v2`. |
 | Memory | 4 GiB  | You may use swap, but it may cause degraded performance.                                                                                                                                                                                                                                                       |
-| Disk   | 10 GiB |                                                                                                                                                                                                                                                                                                                |
-
-### Odd Exceptions
-
-The panel can't be hosted with hosting providers that utilize Combahton for DDoS protection. When Docker tries to build,
-it can't locate the necessary packages over Combahton's network.
+| Disk   | 30 GiB |                                                                                                                                                                                                                                                                                                                |
 
 ## Installation
 
@@ -73,10 +67,9 @@ works.
 curl -fsSL https://get.docker.com/ | sh
 ```
 
-::: warning
-Please ensure your installation of Docker succeeded using the command above. Otherwise,
-visit [Docker](https://docker.com) and find a guide for your operating system to manually install Docker.
-:::
+> [!WARNING]
+> Please ensure your installation of Docker succeeded using the command above. Otherwise,
+> visit [Docker](https://docker.com) and find a guide for your operating system to manually install Docker.
 
 ### Download Files
 
@@ -97,10 +90,9 @@ tar -xzvf panel.tar.gz
 chmod -R o+w storage/* bootstrap/cache/
 ```
 
-::: tip Tip
-If you receive file permission errors like in [this picture](https://imgur.com/JsKKctZ.png), try
-running `docker compose exec workspace chmod -R o+w storage/* bootstrap/cache/`
-:::
+> [!TIP]
+> If you receive file permission errors like in [this picture](https://imgur.com/JsKKctZ.png), try
+> running `docker compose exec workspace chmod -R o+w storage/* bootstrap/cache/`
 
 ### Configuration
 
@@ -129,11 +121,10 @@ First up, let's declare where this panel will be hosted. You'll need to edit the
 users can access. If you don't have a domain, you can host directly from your IP address by leaving it
 as `APP_URL=http://localhost`
 
-::: tip Pro-tip
-Convoy comes with auto-TLS. If you'd like extra security, make sure to set your protocol to `https:`. However, auto-TLS
-requires a registered domain that's pointed to your IP address, and if you're using Cloudflare or proxies, they must be
-disabled.
-:::
+> [!TIP] Pro-tip
+> Convoy comes with auto-TLS. If you'd like extra security, make sure to set your protocol to `https:`. However, auto-TLS
+> requires a registered domain that's pointed to your IP address, and if you're using Cloudflare or proxies, they must be
+> disabled.
 
 ```ini
 APP_URL=http://localhost
@@ -147,21 +138,19 @@ Next, we need to configure the database credentials for
 - `DB_USERNAME`
     - This value cannot be `root`
 - `DB_PASSWORD`
-- `DB_ROOT_PASSWORD`
 
-If your password contains special characters, please wrap your value with double quotation marks.
+If your password contains special characters, please wrap your value with single quotation marks.
 
 ```ini
 DB_DATABASE=convoy
 DB_USERNAME=convoy_user
-DB_PASSWORD="I can use special characters here!"
-DB_ROOT_PASSWORD=im_alphanumeric
+DB_PASSWORD='I can use special characters here!'
 ```
 
 #### Cache Server
 
 Now we need to configure the cache server, which is essential to providing low-latency requests. Please supply a
-password for the `REDIS_PASSWORD` variable. Again, if you need to use special characters, please wrap them in double
+password for the `REDIS_PASSWORD` variable. Again, if you need to use special characters, please wrap them in single
 quotation marks.
 
 ```ini
@@ -216,6 +205,8 @@ Then, rebuild the Dockerfiles and fully restart the containers.
 ```bash
 docker compose down
 docker compose up -d --build
+docker compose exec workspace bash -c "php artisan optimize"
+docker compose restart
 ```
 
 ### Adding a User
@@ -245,7 +236,7 @@ and reset the cache.
 ```bash
 docker compose down
 docker compose up -d --build
-docker compose exec workspace bash -c "php artisan optimize:clear && \
-                                       php artisan optimize"
+docker compose exec workspace bash -c "php artisan optimize"
+docker compose restart
 ```
 

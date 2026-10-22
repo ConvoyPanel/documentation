@@ -68,9 +68,13 @@ Writing documentation is an exercise in empathy. We're not describing an objecti
     - **Use a lot of positive and empathetic emojis.** It's always better to seem a little strange than mean or impatient.
     - **Kindly communicate rules/boundaries.** If someone behaves in a way that's abusive/inappropriate, respond only with kindness and maturity, but also make it clear that this behavior is not acceptable and what will happen (according to the code of conduct) if they continue behaving poorly.
 
-### Tips, Callouts, Alerts, and Line Highlights
+### Pages, Sidebar, and Images
 
-We have some dedicated styles to denote something that's worth highlighting in a particular way. These are captured [on this page](https://vitepress.dev/guide/markdown#custom-containers). **They are to be used sparingly.**
+Pages are Markdown files under `docs/`; a file's path is its URL, so `docs/panel/v4/getting-started.md` is served at `/docs/panel/v4/getting-started`. Every page starts with a level-one heading, which becomes its title. A new page also needs a line in `documentation.md`, the nested list that is the sidebar (see the [README](../../README.md) for the format). Images go in `assets/images/` and are referenced as `/assets/images/<file>`; links to other pages use their URL path, such as `/docs/misc/coterm`.
+
+### Tips, Callouts, and Alerts
+
+Alerts use the GitHub syntax: a blockquote whose first line is `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]` or `> [!CAUTION]`, optionally followed by a title on the same line (`> [!TIP] Pro-tip`). The rest of the blockquote is the body. **They are to be used sparingly.**
 
 There is a certain temptation to abuse these styles, as one can simply add a change inside a callout. However, this breaks up the flow of reading for the user and should only be used in special circumstances. Wherever possible, we should attempt to create a narrative and flow within the page to respect the reader's cognitive load.
 
