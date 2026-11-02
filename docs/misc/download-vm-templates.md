@@ -25,9 +25,8 @@ Now, you are ready to run the downloader and install the templates to your Proxm
 
 You will be prompted to input the `Storage Volume`: This is the name of the volume, where your template servers will be saved to.
 
-::: tip Tip
-Make sure, that your selected location is configured to store VM Disks. Otherwise, the templates will not install correctly.
-:::
+> [!TIP]
+> Make sure, that your selected location is configured to store VM Disks. Otherwise, the templates will not install correctly.
 
 ![Screenshot of storages in Proxmox](/assets/images/choosing-storage.png)
 
@@ -35,12 +34,11 @@ You have now installed all templates onto your Proxmox node.
 
 ## Adding templates to Convoy
 
-After you have added a node into Convoy ([Adding a Node](https://convoypanel.com/docs/panel/adding-a-node.html)), you can import the templates to Convoy.
+After you have added a node into Convoy ([Adding a Node](/docs/panel/v4/adding-a-node)), you can import the templates to Convoy.
 Navigate to the Admin area -> Nodes and select your node. Then click on "Templates". You can now create a "Template Group"
 
-::: tip Tip
-This template group name will be displayed, when clients want to reinstall their servers. Name it clearly!
-:::
+> [!TIP]
+> This template group name will be displayed, when clients want to reinstall their servers. Name it clearly!
 
 After creating a group, we can add the templates into the group. The `Display Name` will be the name of the template, which your users will see. The `VMID` is the server-id (see below) of the template within Proxmox.
 

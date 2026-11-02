@@ -13,9 +13,8 @@ available in a [repository](https://github.com/convoypanel/broker).
 
 Below is the command to install the terminal broker to enable console sessions over the web.
 
-::: danger Pro-tip
-You must run this command on the `/` directory of your Proxmox system.
-:::
+> [!CAUTION] Pro-tip
+> You must run this command on the `/` directory of your Proxmox system.
 
 ```bash
 curl -fsSL https://github.com/convoypanel/broker/releases/latest/download/broker.tar.gz | tar -xzv

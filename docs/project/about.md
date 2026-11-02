@@ -1,31 +1,11 @@
-<script setup>
-import { VPTeamMembers } from 'vitepress/theme'
-
-const members = [
-  {
-    avatar: '/assets/images/eric-wang.png',
-    name: 'Eric Wang',
-    title: 'Creator',
-    links: [
-      { icon: 'github', link: 'https://github.com/ericwang401' }
-    ]
-  },
-  {
-    avatar: '/assets/images/anush-k.png',
-    name: 'Anush K',
-    title: 'Former Developer',
-    links: [
-      { icon: 'github', link: 'https://github.com/AnushK-Fro' }
-    ]
-  },
-]
-</script>
-
 # About
 
 ## Core Project Team
 
-<VPTeamMembers size="small" :members="members" />
+| Name      | Role             | GitHub                                        |
+|-----------|------------------|-----------------------------------------------|
+| Eric Wang | Creator          | [ericwang401](https://github.com/ericwang401) |
+| Anush K   | Former Developer | [AnushK-Fro](https://github.com/AnushK-Fro)   |
 
 ## Community Team
 
@@ -61,5 +41,3 @@ The panel source code is available under the [Business Source License](https://m
 license doesn't mean Convoy is open-source as open-source implies freedom of usage, modification, and distribution.
 However, Convoy places certain limits on usage, which are explained further on
 the [licensing page](/docs/project/licensing).
-
-

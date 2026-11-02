@@ -53,10 +53,9 @@ container with the same command you used to start it.
 
 ### Invalid TLS Certificates
 
-::: danger
-This option makes your Coterm vulnerable to man-in-the-middle attacks. Only use this option if you know what you are
-doing. It's also pretty irresponsible to use this option in production, especially as a hosting provider.
-:::
+> [!CAUTION]
+> This option makes your Coterm vulnerable to man-in-the-middle attacks. Only use this option if you know what you are
+> doing. It's also pretty irresponsible to use this option in production, especially as a hosting provider.
 
 If you are using a self-signed certificate that isn't trusted in the Docker container that's running Coterm, you will
 get

@@ -4,7 +4,7 @@ IPAM stands for IP address management and needs to be configured if your VMs wit
 
 ## Creating an IP Pool
 
-Assuming you have a Node configured ([Adding a Node](https://convoypanel.com/docs/panel/v4/adding-a-node.html)), in the admin interface, select the `IPAM` tab. 
+Assuming you have a Node configured ([Adding a Node](/docs/panel/v4/adding-a-node)), in the admin interface, select the `IPAM` tab. 
 You first need to create an IP Pool. This can be done with the button on the top right. Name your pool and select all nodes that shall have access to this IP pool.
 
 ## Adding IP addresses to a pool
