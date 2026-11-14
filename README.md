@@ -49,6 +49,51 @@ after it. The kinds are `NOTE`, `TIP`, `IMPORTANT`, `WARNING` and `CAUTION`.
 > Convoy comes with auto-TLS.
 ```
 
+## API pages
+
+A section (`##`) whose first line is an endpoint becomes an API reference: the text and fields on the
+left, and request and response examples on the right. Write the method in bold and the path in code,
+with no spaces in the path, so `<user_id>` and not `<user id>`; a path with a space is left as plain
+text. Describe a request's fields in a table:
+
+````markdown
+## Adding an Address
+
+**POST** `/api/application/address-pools/<pool_id>/addresses`
+
+Adds one address to a pool.
+
+Body parameters
+
+| Field         | Type           | Required | Description                         |
+|---------------|----------------|----------|-------------------------------------|
+| `type`        | string         | Yes      | `ipv4` or `ipv6`.                   |
+| `mac_address` | string or null | No       | MAC address for the address.        |
+
+Payload
+
+```json
+{ "type": "ipv4", "mac_address": null }
+```
+
+Returns
+
+```json
+{ "data": { "id": 14 } }
+```
+````
+
+- The first column is headed `Field` or `Parameter`. `Type`, `Required` and `Description` are
+  optional columns; a table with any other column stays a table.
+- `Type` is free text. `Required` is `Yes` or `No`; a condition, such as "Required when
+  `should_create_server` is `true`", goes in the description. Nested keys use dots (`limits.cpu`).
+- The line above the table, `Body parameters` or `Query parameters`, is its title. Without one, a
+  `GET` says "Query parameters" and the other methods "Body parameters".
+- `Payload` is the request body, and the cURL, PHP, and JavaScript examples are built from it.
+  `Returns` or `Response` is the response. A section has one payload; give each request shape its
+  own section, even when they share a path.
+- Without a table, the payload's keys and types are listed as the body parameters.
+
 ## Images and links
 
 Put images in `assets/images/` and reference them by absolute path:
