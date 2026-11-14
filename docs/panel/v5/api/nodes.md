@@ -4,16 +4,14 @@
 
 **GET** `/api/application/nodes`
 
-Available Request Parameters
-
 Query parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | `page` | integer | The page to return. |
 | `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
-| `filter[name]` | string | Nodes whose name contains this text. |
-| `filter[fqdn]` | string | Nodes whose FQDN contains this text. |
+| `filter[name]` | string | Nodes whose name contains this text, ignoring case. |
+| `filter[fqdn]` | string | Nodes whose FQDN contains this text, ignoring case. |
 | `filter[location_id]` | integer | Nodes in the location with this ID. |
 
 ```json

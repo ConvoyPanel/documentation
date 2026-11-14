@@ -65,15 +65,15 @@ Adds one address to a pool.
 
 Body parameters
 
-| Field       | Type            | Required | Description                                |
-|-------------|-----------------|----------|--------------------------------------------|
-| `type`      | string          | Yes      | `ipv4` or `ipv6`.                          |
-| `server_id` | integer or null | No       | Server to give the address to.             |
+| Field         | Type           | Required | Description                         |
+|---------------|----------------|----------|-------------------------------------|
+| `type`        | string         | Yes      | `ipv4` or `ipv6`.                   |
+| `mac_address` | string or null | No       | MAC address for the address.        |
 
 Payload
 
 ```json
-{ "type": "ipv4", "server_id": null }
+{ "type": "ipv4", "mac_address": null }
 ```
 
 Returns
@@ -83,8 +83,8 @@ Returns
 ```
 ````
 
-- The first column is headed `Field` (or `Parameter` for a `GET`'s query). `Type`, `Required` and
-  `Description` are optional columns; a table with any other column stays a table.
+- The first column is headed `Field` or `Parameter`. `Type`, `Required` and `Description` are
+  optional columns; a table with any other column stays a table.
 - `Type` is free text. `Required` is `Yes` or `No`; a condition, such as "Required when
   `should_create_server` is `true`", goes in the description. Nested keys use dots (`limits.cpu`).
 - The line above the table, `Body parameters` or `Query parameters`, is its title. Without one, a

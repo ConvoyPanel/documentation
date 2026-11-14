@@ -10,7 +10,7 @@ Query parameters
 |---|---|---|
 | `page` | integer | The page to return. |
 | `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
-| `filter[name]` | string | Pools whose name contains this text. |
+| `filter[name]` | string | Pools whose name contains this text, ignoring case. |
 
 ```json
 {
@@ -68,7 +68,7 @@ Query parameters
 | `per_page` | integer | Results per page. Defaults to `50`; the most is `999999`. |
 | `filter[type]` | string | `ipv4` or `ipv6`. |
 | `filter[address]` | string | The address, ignoring case. |
-| `filter[*]` | string | Search by wildcard. |
+| `filter[*]` | string | An address's ID, the address itself, or its MAC address, ignoring case. Separate several with commas. |
 | `filter[server_id]` | integer | Addresses allocated to the server with this ID. Leave it empty (`?filter[server_id]=`) to list unallocated addresses. |
 
 ```json
@@ -178,7 +178,7 @@ Body parameters
 | `type` | string | Yes | `ipv4` or `ipv6`. `address` and `gateway` must be of this type. |
 | `cidr` | integer | Yes | The network's prefix length, from `0` to `128`. |
 | `gateway` | string | Yes | The network's gateway address. |
-| `mac_address` | string or null | Yes | MAC address for the address. `null` leaves it empty. |
+| `mac_address` | string or null | No | MAC address for the address. `null` leaves it empty. |
 | `server_id` | integer or null | Yes | ID of the server to allocate the address to. `null` leaves it unallocated. |
 
 Payload
@@ -228,8 +228,8 @@ Body parameters
 | `type` | string | Yes | `ipv4` or `ipv6`. `starting_address`, `ending_address`, and `gateway` must be of this type. |
 | `cidr` | integer | Yes | The network's prefix length, from `0` to `128`. |
 | `gateway` | string | Yes | The network's gateway address. |
-| `mac_address` | string or null | Yes | MAC address for the address. `null` leaves it empty. |
-| `server_id` | integer or null | Yes | ID of the server to allocate the address to. `null` leaves it unallocated. |
+| `mac_address` | string or null | Yes | MAC address for every address in the range. `null` leaves them empty. |
+| `server_id` | integer or null | Yes | ID of the server to allocate every address in the range to. `null` leaves them unallocated. |
 
 Payload
 
@@ -257,7 +257,7 @@ Body parameters
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `name` | string | Yes | The pool's new name. Up to 191 characters. |
-| `node_ids` | array of integers | No | IDs of the nodes that can use this pool. A node left out is detached, unless servers on it use the pool's addresses. |
+| `node_ids` | array of integers | Yes | IDs of every node that can use this pool. Nodes left out are detached, so leaving the field out detaches them all. The request is refused if a node you detach has servers using the pool's addresses. |
 
 Payload
 
@@ -293,7 +293,7 @@ Body parameters
 |---|---|---|---|
 | `type` | string | Yes | `ipv4` or `ipv6`. `address` must be of this type. |
 | `cidr` | integer | Yes | The network's prefix length, from `0` to `128`. |
-| `address` | string | No | The IP address. |
+| `address` | string | Yes | The IP address. |
 | `gateway` | string | No | The network's gateway address. |
 | `mac_address` | string or null | No | MAC address for the address. `null` leaves it empty. |
 | `server_id` | integer or null | No | ID of the server to allocate the address to. `null` leaves it unallocated. |

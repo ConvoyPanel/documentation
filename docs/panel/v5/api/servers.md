@@ -4,15 +4,13 @@
 
 **GET** `/api/application/servers`
 
-Available Request Parameters
-
 Query parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | `page` | integer | The page to return. |
 | `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
-| `filter[name]` | string | Servers whose name contains this text. |
+| `filter[name]` | string | Servers whose name contains this text, ignoring case. |
 | `filter[node_id]` | integer | Servers on the node with this ID. |
 | `filter[user_id]` | integer | Servers owned by the user with this ID. |
 
@@ -122,9 +120,9 @@ Body parameters
 | Field | Type | Required | Description |
 |---|---|---|---|
 | `name` | string | No | The server's name. Up to 40 characters. |
-| `hostname` | string | No | The server's hostname. Up to 191 characters. |
+| `hostname` | string | No | The server's hostname. Up to 191 characters. Changing it also changes the hostname in the VM's cloud-init settings. |
 | `user_id` | integer | No | ID of the user who owns the server. |
-| `vmid` | integer | No | The VM's ID on its Proxmox node, from `100` to `999999999`. |
+| `vmid` | integer | No | ID of the VM on the node that this server is linked to, from `100` to `999999999`. Changing it links the server to a different VM; it doesn't renumber the VM. |
 | `status` | string or null | No | `installing`, `install_failed`, `suspended`, `restoring_backup`, `restoring_snapshot`, `deleting`, or `deletion_failed`. |
 
 Payload
@@ -235,8 +233,8 @@ Body parameters
 | `cpu` | integer | Yes | Number of CPU cores. |
 | `memory` | integer | Yes | Memory in bytes. At least `16777216` (16 MiB), and within what the node has left. |
 | `disk` | integer | Yes | Disk size in bytes, within what the node has left. |
-| `address_ids` | array of integers or null | Yes | IDs of the addresses to give the server. An address that belongs to another server is refused. |
-| `snapshot_limit` | integer or null | Yes | How many snapshots the server may have. Use `null` for no limit. |
+| `address_ids` | array of integers or null | Yes | IDs of every address the server should have. Addresses left out are taken off the server, so `[]` or `null` removes them all. An address that belongs to another server is refused. |
+| `snapshot_limit` | integer or null | Yes | The server's snapshot limit. |
 | `backup_limit` | integer or null | Yes | How many backups the server may have. Use `null` for no limit. |
 | `bandwidth_limit` | integer or null | Yes | The server's bandwidth limit. Use `null` for no limit. |
 | `bandwidth_usage` | integer | No | Bandwidth the server has used so far. |
@@ -357,13 +355,13 @@ Body parameters
 | `limits.cpu` | integer | Yes | Number of CPU cores. |
 | `limits.memory` | integer | Yes | Memory in bytes. At least `16777216` (16 MiB), and within what the node has left. |
 | `limits.disk` | integer | Yes | Disk size in bytes, within what the node has left. |
-| `limits.snapshots` | integer or null | Yes | How many snapshots the server may have. Use `null` for no limit. |
+| `limits.snapshots` | integer or null | Yes | The server's snapshot limit. |
 | `limits.backups` | integer or null | Yes | How many backups the server may have. Use `null` for no limit. |
 | `limits.bandwidth` | integer or null | Yes | The server's bandwidth limit. Use `null` for no limit. |
 | `limits.address_ids` | array of integers or null | No | IDs of unallocated addresses to give the server. |
-| `should_create_server` | boolean | Yes | `true` creates the VM on the node. `false` only adds the server to Convoy. |
-| `template_uuid` | string | No | UUID of the template to install. Required when `should_create_server` is `true`. |
-| `account_password` | string | No | The server's password, 8 to 191 characters, typed on a US keyboard. Required when `should_create_server` is `true`. |
+| `should_create_server` | boolean | Yes | `true` builds a new VM from `template_uuid`. `false` takes over the VM that already has this `vmid` on the node. |
+| `template_uuid` | string | No | UUID of the template to build from, which must be on the node in `node_id`. Use the template's own UUID from the [Templates API](/docs/panel/v5/api/templates), not its group's. Required when `should_create_server` is `true`. |
+| `account_password` | string | No | Password for the VM's account. 8 to 191 printable ASCII characters, with a lowercase letter, an uppercase letter, a digit, and one of `!@#$%^&*`. Required when `should_create_server` is `true`. |
 | `start_on_completion` | boolean | Yes | `true` starts the server once it is created. |
 
 Payload

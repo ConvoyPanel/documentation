@@ -4,15 +4,13 @@
 
 **GET** `/api/application/locations`
 
-Available Request Parameters
-
 Query parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | `page` | integer | The page to return. |
 | `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
-| `filter[short_code]` | string | Locations whose short code contains this text. |
+| `filter[short_code]` | string | Locations whose short code contains this text, ignoring case. |
 
 Response
 

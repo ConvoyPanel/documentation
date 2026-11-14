@@ -4,15 +4,13 @@
 
 **GET** `/api/application/nodes/<nodeid>/addresses`
 
-Available Request Parameters
-
 Query parameters
 
 | Parameter | Type | Description |
 |---|---|---|
 | `page` | integer | The page to return. |
 | `per_page` | integer | Results per page. Defaults to `50`; the most is `999999`. |
-| `filter[address]` | string | Addresses that contain this text. |
+| `filter[address]` | string | Addresses that contain this text, ignoring case. |
 | `filter[type]` | string | `ipv4` or `ipv6`. |
 | `filter[server_id]` | integer | Addresses allocated to the server with this ID. Leave it empty (`?filter[server_id]=`) to list unallocated addresses. |
 

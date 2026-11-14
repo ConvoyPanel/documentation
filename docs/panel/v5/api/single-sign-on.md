@@ -4,7 +4,7 @@
 
 **POST** `/api/application/users/<id>/generate-sso-token`
 
-Tokens expire after 2 minutes or if it gets used.
+A token is valid for 15 seconds, so redirect the user as soon as you have it.
 
 ```json
 {

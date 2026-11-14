@@ -11,7 +11,7 @@ Query parameters
 | `page` | integer | The page to return. |
 | `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
 | `filter[id]` | integer | The user with this ID. |
-| `filter[name]` | string | Users whose name contains this text. |
+| `filter[name]` | string | Users whose name contains this text, ignoring case. |
 | `filter[email]` | string | The user with this email address, ignoring case. |
 
 ```json
@@ -74,8 +74,8 @@ Body parameters
 |---|---|---|---|
 | `name` | string | Yes | The user's name. 1 to 191 characters. |
 | `email` | string | Yes | The user's email address. Must not belong to another user. |
-| `password` | string or null | No | A new password. `null` keeps the current one. |
-| `root_admin` | boolean | No | `true` makes the user an administrator. |
+| `password` | string or null | No | A new password of at least 8 characters. `null`, or leaving it out, keeps the current one. |
+| `root_admin` | boolean | Yes | `true` for an administrator, `false` for a regular user. Setting it to `false` on an administrator also deletes their API tokens. |
 
 Payload
 
@@ -113,8 +113,8 @@ Body parameters
 |---|---|---|---|
 | `name` | string | Yes | The user's name. 1 to 191 characters. |
 | `email` | string | Yes | The user's email address. Must not belong to another user. |
-| `password` | string | Yes | The user's password. |
-| `root_admin` | boolean | No | `true` makes the user an administrator. |
+| `password` | string | Yes | The user's password. At least 8 characters. |
+| `root_admin` | boolean | Yes | `true` for an administrator, `false` for a regular user. |
 
 Payload
 
