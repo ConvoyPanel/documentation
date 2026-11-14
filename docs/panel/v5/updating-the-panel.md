@@ -10,23 +10,40 @@ also appear as a banner on every page an administrator opens, until you update. 
 GitHub, checked once an hour. That check only sees full releases, so during the alpha, new alphas appear on the
 [releases page](https://github.com/ConvoyPanel/panel/releases) instead.
 
-## Before You Begin
-
-Make sure no jobs are running, such as a backup, a server installation, or a restore. Sign in as an administrator, open
-`/horizon`, and wait until nothing is pending or processing. An update restarts the queue worker, which gives a running
-job one minute to finish before stopping it, and a job stopped halfway can leave a server in an unknown state.
-
-![Screenshot of Horizon dashboard with directions on checking for running jobs](/assets/images/laravel-horizon-checking-for-running-jobs.png)
-
 ## Updating
 
 ```bash
 convoy upgrade
 ```
 
-It saves a copy of the database to `/opt/convoy/backups`, downloads the new release, restarts the panel, and waits for
-it to report healthy. Database changes are applied on their own when the panel starts. If the panel isn't healthy
-within five minutes, it says so and points you at `convoy logs web`.
+That's the whole update. You don't need to check for running jobs first:
+
+1. It downloads the new release and updates the `convoy` command to the one that comes with it.
+2. It stops starting new jobs and lets the queue worker finish the ones it's running. Backups, installs, and restores
+   keep running on Proxmox in the meantime, and the panel picks them up again when it's back.
+3. It saves a copy of the database to `/opt/convoy/backups`.
+4. It starts the new release, which applies database changes, and waits for it to report healthy before starting the
+   worker and scheduler again.
+
+If something fails before the new release starts, such as the database backup, your running panel isn't touched, and the
+worker and scheduler start again. If the new release isn't healthy within five minutes, the update stops and points you
+at `convoy logs web`. The worker and scheduler stay stopped, so no jobs run against a half-updated panel, until you've
+fixed it and run `convoy up`.
+
+If you've edited `/opt/convoy/compose.yml`, the update leaves it as it is and saves the new release's next to it as
+`compose.yml.new`, so you can compare them and bring over what you need.
+
+### Updating from 5.0.0-alpha.1
+
+The `convoy` command that came with 5.0.0-alpha.1 can't update itself, and it restarts everything at once. Replace it
+once with the one from the release you're updating to, with that release in place of `5.0.0-alpha.2`:
+
+```bash
+curl -fsSL https://github.com/ConvoyPanel/panel/releases/download/v5.0.0-alpha.2/convoy -o /usr/local/bin/convoy
+chmod 755 /usr/local/bin/convoy
+```
+
+Then update as above. From then on, `convoy upgrade` keeps the command up to date itself.
 
 ## Choosing What You Update To
 
