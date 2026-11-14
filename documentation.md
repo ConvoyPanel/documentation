@@ -12,6 +12,7 @@
         - [Getting Started](panel/v5/getting-started)
         - [Upgrading from v4](panel/v5/upgrading-from-v4)
         - [Updating the Panel](panel/v5/updating-the-panel)
+        - [Running Behind a Reverse Proxy](panel/v5/running-behind-a-reverse-proxy)
         - [Enabling Terminal Access](panel/v5/enabling-terminal-access)
         - [Adding a Node](panel/v5/adding-a-node)
         - [Configuring IPAM](panel/v5/configuring-ipam)

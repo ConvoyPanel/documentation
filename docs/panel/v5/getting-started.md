@@ -93,14 +93,9 @@ and set it as described in [Changing Settings](#changing-settings).
 
 ### Running Behind Your Own Proxy or Load Balancer
 
-When something in front of the panel handles HTTPS, turn the panel's own certificates off and tell it which address
-the proxy connects from, so client addresses in the activity log and rate limits are the real ones rather than the
-proxy's. In `/opt/convoy/.env`:
-
-```ini
-CONVOY_AUTO_HTTPS=off
-TRUSTED_PROXIES=10.0.0.5
-```
+If nginx, Nginx Proxy Manager, Cloudflare, or a load balancer already handles HTTPS for the domain, follow
+[Running Behind a Reverse Proxy](/docs/panel/v5/running-behind-a-reverse-proxy) instead. It takes a few settings in
+`/opt/convoy/.env`, with examples for the common proxies.
 
 ## Changing Settings
 
