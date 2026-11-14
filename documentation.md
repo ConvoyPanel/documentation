@@ -1,7 +1,6 @@
 - Project
     - [Introduction](project/introduction)
     - [About](project/about)
-    - [Demo](panel/demo)
     - [Licensing](project/licensing)
     - [Resources](https://github.com/ConvoyPanel/panel/discussions/categories/resources)
     - [Support](project/support)
@@ -15,6 +14,7 @@
         - [Running Behind a Reverse Proxy](panel/v5/running-behind-a-reverse-proxy)
         - [Enabling Terminal Access](panel/v5/enabling-terminal-access)
         - [Adding a Node](panel/v5/adding-a-node)
+        - [Installing Templates](panel/v5/installing-templates)
         - [Configuring IPAM](panel/v5/configuring-ipam)
         - [Integrations](panel/v5/integrations)
         - [Telemetry](panel/v5/telemetry)
@@ -34,6 +34,7 @@
         - [Updating the Panel](panel/v4/updating-the-panel)
         - [Enabling Terminal Access](panel/v4/enabling-terminal-access)
         - [Adding a Node](panel/v4/adding-a-node)
+        - [Installing Templates](panel/v4/installing-templates)
         - [Configuring IPAM](panel/v4/configuring-ipam)
         - [Integrations](panel/v4/integrations)
         + Application API
@@ -63,4 +64,3 @@
             - [Single Sign On](panel/v3/api/single-sign-on)
 - Miscellaneous
     - [Coterm](misc/coterm)
-    - [Download VM Templates](misc/download-vm-templates)
