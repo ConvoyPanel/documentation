@@ -36,14 +36,16 @@ If you've edited `/opt/convoy/compose.yml`, the update leaves it as it is and sa
 ### Updating from 5.0.0-alpha.1
 
 The `convoy` command that came with 5.0.0-alpha.1 can't update itself, and it restarts everything at once. Replace it
-once with the one from the release you're updating to, with that release in place of `5.0.0-alpha.2`:
+once with the one from 5.0.0-alpha.2, point the install at that release, and update:
 
 ```bash
 curl -fsSL https://github.com/ConvoyPanel/panel/releases/download/v5.0.0-alpha.2/convoy -o /usr/local/bin/convoy
 chmod 755 /usr/local/bin/convoy
+sed -i 's/^CONVOY_VERSION=.*/CONVOY_VERSION=5.0.0-alpha.2/' /opt/convoy/.env
+convoy upgrade
 ```
 
-Then update as above. From then on, `convoy upgrade` keeps the command up to date itself.
+From then on, `convoy upgrade` keeps the command up to date itself.
 
 ## Choosing What You Update To
 
