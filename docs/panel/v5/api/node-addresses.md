@@ -6,13 +6,15 @@
 
 Available Request Parameters
 
--   page
--   per_page
-    - max is 100
--   filter[address]
--   filter[type] = ipv4 | ipv6
--   filter[server_id]
-    -   This field is nullable and will return unallocated addresses if you leave it as `?filter[server_id]=` in your request
+Query parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `page` | integer | The page to return. |
+| `per_page` | integer | Results per page. Defaults to `50`; the most is `999999`. |
+| `filter[address]` | string | Addresses that contain this text. |
+| `filter[type]` | string | `ipv4` or `ipv6`. |
+| `filter[server_id]` | integer | Addresses allocated to the server with this ID. Leave it empty (`?filter[server_id]=`) to list unallocated addresses. |
 
 ```json
 {
@@ -107,6 +109,6 @@ Returns
 
 ## Deleting an Address
 
-**DELETE** `/api/application/nodes/<nodeid>/addresses/<address id>`
+**DELETE** `/api/application/nodes/<nodeid>/addresses/<addressid>`
 
 Returns no content

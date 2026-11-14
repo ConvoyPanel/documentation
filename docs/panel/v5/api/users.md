@@ -4,12 +4,15 @@
 
 **GET** `/api/application/users`
 
--   page
--   per_page
-    -   max is 100
--   filter[name]
--   filter[id]
--   filter[email]
+Query parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `page` | integer | The page to return. |
+| `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
+| `filter[id]` | integer | The user with this ID. |
+| `filter[name]` | string | Users whose name contains this text. |
+| `filter[email]` | string | The user with this email address, ignoring case. |
 
 ```json
 {
@@ -63,10 +66,16 @@
 
 ## Updating a user
 
-**PUT** `/api/application/users/<user id>`
+**PUT** `/api/application/users/<id>`
 
--   Note: if you want to change the password, set it to a string instead of a null value
-    -   leave it as a null value if you want no change
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | The user's name. 1 to 191 characters. |
+| `email` | string | Yes | The user's email address. Must not belong to another user. |
+| `password` | string or null | No | A new password. `null` keeps the current one. |
+| `root_admin` | boolean | No | `true` makes the user an administrator. |
 
 Payload
 
@@ -97,6 +106,15 @@ Returns
 ## Creating a user
 
 **POST** `/api/application/users`
+
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | The user's name. 1 to 191 characters. |
+| `email` | string | Yes | The user's email address. Must not belong to another user. |
+| `password` | string | Yes | The user's password. |
+| `root_admin` | boolean | No | `true` makes the user an administrator. |
 
 Payload
 

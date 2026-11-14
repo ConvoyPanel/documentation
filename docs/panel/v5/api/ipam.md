@@ -4,12 +4,13 @@
 
 **GET** `/api/application/address-pools`
 
-Available Request Parameters
+Query parameters
 
-- page
-- per_page
-    - max is 100
-- filter[name]
+| Parameter | Type | Description |
+|---|---|---|
+| `page` | integer | The page to return. |
+| `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
+| `filter[name]` | string | Pools whose name contains this text. |
 
 ```json
 {
@@ -59,17 +60,16 @@ Available Request Parameters
 
 **GET** `/api/application/address-pools/<pool_id>/addresses`
 
-Available Request Parameters
+Query parameters
 
-- page
-- per_page
-    - max is 100
-- filter[type] = ipv4 | ipv6
-- filter[address]
-- filter[*]
-    - search by wildcard
-- filter[server_id]
-    - an empty server_id field will search for unallocated IP addresses
+| Parameter | Type | Description |
+|---|---|---|
+| `page` | integer | The page to return. |
+| `per_page` | integer | Results per page. Defaults to `50`; the most is `999999`. |
+| `filter[type]` | string | `ipv4` or `ipv6`. |
+| `filter[address]` | string | The address, ignoring case. |
+| `filter[*]` | string | Search by wildcard. |
+| `filter[server_id]` | integer | Addresses allocated to the server with this ID. Leave it empty (`?filter[server_id]=`) to list unallocated addresses. |
 
 ```json
 {
@@ -132,10 +132,12 @@ Available Request Parameters
 
 **POST** `/api/application/address-pools`
 
-Available Request Parameters
+Body parameters
 
-- `name`: Pool name
-- `node_ids`: Node ID that can access this pool in array
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | The pool's name. Up to 191 characters. |
+| `node_ids` | array of integers | No | IDs of the nodes that can use this pool. |
 
 Payload
 
@@ -161,23 +163,23 @@ Returns
 }
 ```
 
-## Creating single or multiple address
+## Adding an Address
 
 **POST** `/api/application/address-pools/<pool_id>/addresses`
 
-- `is_bulk_action`: `true` for multiple adresses and `false` for single address
-    - For single address use this:
-        - `address`: IP address value
-    - For multiple address use this to define range:
-        - `starting_address`: First IP address value
-        - `ending_address`: Last IP address value
-- `type`: `ipv4` or `ipv6`
-- `cidr`: CIDR value
-- `gateway`: Network gateway IP value
-- `mac_address`: MAC address value or `null` for empty
-- `server_id`: Server id number for adress allocation or `null` for empty
+Adds one address to a pool.
 
-### Single address
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `is_bulk_action` | boolean | Yes | Always `false` when adding one address. |
+| `address` | string | Yes | The IP address to add. |
+| `type` | string | Yes | `ipv4` or `ipv6`. `address` and `gateway` must be of this type. |
+| `cidr` | integer | Yes | The network's prefix length, from `0` to `128`. |
+| `gateway` | string | Yes | The network's gateway address. |
+| `mac_address` | string or null | Yes | MAC address for the address. `null` leaves it empty. |
+| `server_id` | integer or null | Yes | ID of the server to allocate the address to. `null` leaves it unallocated. |
 
 Payload
 
@@ -210,7 +212,24 @@ Returns
 }
 ```
 
-### Multiple address
+## Adding a Range of Addresses
+
+**POST** `/api/application/address-pools/<pool_id>/addresses`
+
+Adds every address from a starting address to an ending address. A range holds at most 65,536 addresses.
+
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `is_bulk_action` | boolean | Yes | Always `true` when adding a range. |
+| `starting_address` | string | Yes | The first IP address of the range. |
+| `ending_address` | string | Yes | The last IP address of the range. |
+| `type` | string | Yes | `ipv4` or `ipv6`. `starting_address`, `ending_address`, and `gateway` must be of this type. |
+| `cidr` | integer | Yes | The network's prefix length, from `0` to `128`. |
+| `gateway` | string | Yes | The network's gateway address. |
+| `mac_address` | string or null | Yes | MAC address for the address. `null` leaves it empty. |
+| `server_id` | integer or null | Yes | ID of the server to allocate the address to. `null` leaves it unallocated. |
 
 Payload
 
@@ -233,8 +252,12 @@ Returns no content
 
 **PUT** `/api/application/address-pools/<pool_id>`
 
-- `name`: new name
-- `node_ids`: new node ID that can access this pool in array
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | The pool's new name. Up to 191 characters. |
+| `node_ids` | array of integers | No | IDs of the nodes that can use this pool. A node left out is detached, unless servers on it use the pool's addresses. |
 
 Payload
 
@@ -264,13 +287,18 @@ Returns
 
 **PUT** `/api/application/address-pools/<pool_id>/addresses/<address_id>`
 
-- `address`: New IP address value
-- `type`: `ipv4` or `ipv6`
-- `cidr`: New CIDR value
-- `gateway`: New network gateway IP value
-- `mac_address`: New MAC address value
-- `server_id`: New server id number for address allocation
-    - null indicates that the address is not allocated to any server
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `type` | string | Yes | `ipv4` or `ipv6`. `address` must be of this type. |
+| `cidr` | integer | Yes | The network's prefix length, from `0` to `128`. |
+| `address` | string | No | The IP address. |
+| `gateway` | string | No | The network's gateway address. |
+| `mac_address` | string or null | No | MAC address for the address. `null` leaves it empty. |
+| `server_id` | integer or null | No | ID of the server to allocate the address to. `null` leaves it unallocated. |
+
+Payload
 
 ```json
 {

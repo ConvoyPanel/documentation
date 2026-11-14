@@ -6,12 +6,15 @@
 
 Available Request Parameters
 
--   page
--   per_page
-    -   max is 100
--   filter[name]
--   filter[node_id]
--   filter[user_id]
+Query parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `page` | integer | The page to return. |
+| `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
+| `filter[name]` | string | Servers whose name contains this text. |
+| `filter[node_id]` | integer | Servers on the node with this ID. |
+| `filter[user_id]` | integer | Servers owned by the user with this ID. |
 
 ```json
 {
@@ -114,11 +117,20 @@ Available Request Parameters
 
 **PATCH** `/api/application/servers/<uuid>`
 
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | No | The server's name. Up to 40 characters. |
+| `hostname` | string | No | The server's hostname. Up to 191 characters. |
+| `user_id` | integer | No | ID of the user who owns the server. |
+| `vmid` | integer | No | The VM's ID on its Proxmox node, from `100` to `999999999`. |
+| `status` | string or null | No | `installing`, `install_failed`, `suspended`, `restoring_backup`, `restoring_snapshot`, `deleting`, or `deletion_failed`. |
+
 Payload
 
 ```json
 {
-    "node_id": 4417,
     "user_id": 1,
     "status": null,
     "name": "ubunt",
@@ -215,6 +227,19 @@ Response
 ## Updating a server's build
 
 **PATCH** `/api/application/servers/<uuid>/settings/build`
+
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `cpu` | integer | Yes | Number of CPU cores. |
+| `memory` | integer | Yes | Memory in bytes. At least `16777216` (16 MiB), and within what the node has left. |
+| `disk` | integer | Yes | Disk size in bytes, within what the node has left. |
+| `address_ids` | array of integers or null | Yes | IDs of the addresses to give the server. An address that belongs to another server is refused. |
+| `snapshot_limit` | integer or null | Yes | How many snapshots the server may have. Use `null` for no limit. |
+| `backup_limit` | integer or null | Yes | How many backups the server may have. Use `null` for no limit. |
+| `bandwidth_limit` | integer or null | Yes | The server's bandwidth limit. Use `null` for no limit. |
+| `bandwidth_usage` | integer | No | Bandwidth the server has used so far. |
 
 Payload
 
@@ -320,6 +345,27 @@ Returns
 
 **POST** `/api/application/servers`
 
+Body parameters
+
+| Field | Type | Required | Description |
+|---|---|---|---|
+| `name` | string | Yes | The server's name. Up to 40 characters. |
+| `user_id` | integer | Yes | ID of the user who owns the server. |
+| `node_id` | integer | Yes | ID of the node to put the server on. |
+| `vmid` | integer or null | Yes | The VM's ID on the node, from `100` to `999999999`. `null` lets Convoy pick a free one. |
+| `hostname` | string | Yes | The server's hostname. Up to 191 characters. |
+| `limits.cpu` | integer | Yes | Number of CPU cores. |
+| `limits.memory` | integer | Yes | Memory in bytes. At least `16777216` (16 MiB), and within what the node has left. |
+| `limits.disk` | integer | Yes | Disk size in bytes, within what the node has left. |
+| `limits.snapshots` | integer or null | Yes | How many snapshots the server may have. Use `null` for no limit. |
+| `limits.backups` | integer or null | Yes | How many backups the server may have. Use `null` for no limit. |
+| `limits.bandwidth` | integer or null | Yes | The server's bandwidth limit. Use `null` for no limit. |
+| `limits.address_ids` | array of integers or null | No | IDs of unallocated addresses to give the server. |
+| `should_create_server` | boolean | Yes | `true` creates the VM on the node. `false` only adds the server to Convoy. |
+| `template_uuid` | string | No | UUID of the template to install. Required when `should_create_server` is `true`. |
+| `account_password` | string | No | The server's password, 8 to 191 characters, typed on a US keyboard. Required when `should_create_server` is `true`. |
+| `start_on_completion` | boolean | Yes | `true` starts the server once it is created. |
+
 Payload
 
 ```json
@@ -415,9 +461,11 @@ Returns
 
 **DELETE** `/api/application/servers/<uuid>`
 
-Available Parameters
-- no_purge
-  - set this to true to retain the VM and its associated files on the Proxmox node while deleting it off of Convoy
+Query parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `no_purge` | boolean | `true` keeps the VM and its files on the Proxmox node and only removes the server from Convoy. |
 
 
 Returns no content

@@ -6,10 +6,13 @@
 
 Available Request Parameters
 
--   page
--   per_page
-    -   max is 100
--   short_code
+Query parameters
+
+| Parameter | Type | Description |
+|---|---|---|
+| `page` | integer | The page to return. |
+| `per_page` | integer | Results per page. Defaults to `50`; the most is `100`. |
+| `filter[short_code]` | string | Locations whose short code contains this text. |
 
 Response
 
