@@ -177,7 +177,8 @@ The first three run the same image and read the same `.env`.
 Yes. Point the `DB_` and `REDIS_` settings in `/opt/convoy/.env` at your servers, then remove the `postgres` and `redis`
 services from `/opt/convoy/compose.yml`, along with the `depends_on` blocks that mention them and their entries under
 `volumes`. Apply it with `cd /opt/convoy && docker compose up -d --remove-orphans`. `convoy backup` only covers the
-bundled database, so back up your own with your provider's tools.
+bundled database, so back up your own with your provider's tools. Updates leave your edited `compose.yml` alone and
+save each release's as `compose.yml.new`, so compare the two after updating.
 
 ### The panel won't start
 
