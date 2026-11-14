@@ -1,7 +1,6 @@
 - Project
     - [Introduction](project/introduction)
     - [About](project/about)
-    - [Demo](panel/demo)
     - [Licensing](project/licensing)
     - [Resources](https://github.com/ConvoyPanel/panel/discussions/categories/resources)
     - [Support](project/support)
