@@ -47,7 +47,7 @@ only happen on them.
 Run the installer as root:
 
 ```bash
-curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-alpha.2
+curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-alpha.3
 ```
 
 It asks for two things: the hostname your customers will reach the panel on (such as `panel.example.com`), and an email
@@ -67,7 +67,7 @@ Sign in and change that password. It isn't stored anywhere else.
 To install without being asked anything, for example from a provisioning script, pass the answers up front:
 
 ```bash
-curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-alpha.2 \
+curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-alpha.3 \
   --domain panel.example.com --email you@example.com --yes
 ```
 
@@ -75,7 +75,7 @@ curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-a
 
 `--version` decides what you install, and the choice is saved, so updating never moves you past it:
 
-- `5.0.0-alpha.2` installs exactly that release. While Convoy 5 is in alpha, this is the only way in.
+- `5.0.0-alpha.3` installs exactly that release. While Convoy 5 is in alpha, this is the only way in.
 - Once 5.0 is released, `5` (the default, when you leave `--version` out) follows the newest 5.x release, and `5.1`
   follows the newest 5.1.x.
 
