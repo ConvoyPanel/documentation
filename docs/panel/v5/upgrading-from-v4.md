@@ -38,7 +38,7 @@ Start with a dry run. It sets up Convoy 5 in `/opt/convoy`, then converts a copy
 keeps serving your customers:
 
 ```bash
-curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-alpha.5 --import /var/www/convoy --dry-run
+curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-alpha.6 --import /var/www/convoy --dry-run
 ```
 
 It dumps v4's database, converts it to Postgres, compares the number of rows in every table, starts Convoy 5 on the
