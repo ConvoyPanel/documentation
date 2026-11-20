@@ -10,6 +10,7 @@ step and nothing to install here.
 |--------------------|----------------------------------------------------------------------------------------------|
 | `docs/`            | The pages. `docs/panel/v4/getting-started.md` is served at `/docs/panel/v4/getting-started`. |
 | `documentation.md` | The sidebar, as a nested Markdown list.                                                      |
+| `versions.json`    | The panel versions in the version menu, with their labels and status.                        |
 | `assets/images/`   | Images, referenced from pages as `/assets/images/<file>`.                                    |
 
 ## Adding a page
@@ -34,6 +35,31 @@ external sites. A `+` bullet starts a group collapsed.
         - [Getting Started](panel/v3/getting-started)
 - Miscellaneous
     - [Resources](https://github.com/ConvoyPanel/panel/discussions/categories/resources)
+```
+
+## Versions
+
+`versions.json` lists the panel versions in the version menu, newest first. Each key is the folder
+that holds that version's pages, so `docs/panel/v5/` is `v5`.
+
+```json
+{
+    "v5": { "label": "5.x (beta)", "prerelease": true },
+    "v4": { "label": "4.x" },
+    "v3": { "label": "3.x", "eol": true }
+}
+```
+
+- `label` is what the menu shows.
+- `prerelease` marks an alpha, beta or release candidate. Its label shows as a warning, and readers
+  who haven't picked a version get the newest one without it.
+- `eol` marks a version that's no longer maintained. The menu says "End of life" next to it.
+
+A version appears in the menu once its sidebar in `documentation.md` has a page of its own. If the
+file isn't valid, the site keeps showing the list it was deployed with, so check it before pushing:
+
+```bash
+python3 -m json.tool versions.json
 ```
 
 ## Alerts
