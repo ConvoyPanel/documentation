@@ -7,7 +7,7 @@
     - [Report License Abuse](project/report-license-abuse)
     - [License Verification](/lookup)
 - Panel
-    - v5 (alpha)
+    - v5 (beta)
         - [Getting Started](panel/v5/getting-started)
         - [Upgrading from v4](panel/v5/upgrading-from-v4)
         - [Updating the Panel](panel/v5/updating-the-panel)

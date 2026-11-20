@@ -1,7 +1,7 @@
 # Upgrading from v4
 
-> [!WARNING] Alpha
-> Convoy 5 is in alpha. Rehearse the upgrade on your own data now, but keep production panels on v4 until 5.0 is
+> [!WARNING] Beta
+> Convoy 5 is in beta. Rehearse the upgrade on your own data now, but keep production panels on v4 until 5.0 is
 > released.
 
 Convoy 6, the rewritten panel, will only upgrade from Convoy 5. Convoy 5 is the step in between: the panel you already
@@ -38,7 +38,7 @@ Start with a dry run. It sets up Convoy 5 in `/opt/convoy`, then converts a copy
 keeps serving your customers:
 
 ```bash
-curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-alpha.7 --import /var/www/convoy --dry-run
+curl -fsSL https://install.convoypanel.com/5 | sudo bash -s -- --version 5.0.0-beta.1 --import /var/www/convoy --dry-run
 ```
 
 It dumps v4's database, converts it to Postgres, compares the number of rows in every table, starts Convoy 5 on the
