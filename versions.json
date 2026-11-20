@@ -1,0 +1,5 @@
+{
+    "v5": { "label": "5.x (beta)", "prerelease": true },
+    "v4": { "label": "4.x" },
+    "v3": { "label": "3.x", "eol": true }
+}
