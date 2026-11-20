@@ -7,7 +7,7 @@ onto Convoy 5, follow [Upgrading from v4](/docs/panel/v5/upgrading-from-v4) inst
 
 Security notices and news from the Convoy team that apply to your version appear on the admin overview. Critical ones
 also appear as a banner on every page an administrator opens, until you update. **Admin → Settings → Updates** lists them all, along with the newest release on
-GitHub, checked once an hour. That check only sees full releases, so during the alpha, new alphas appear on the
+GitHub, checked once an hour. That check only sees full releases, so until 5.0 is released, new betas appear on the
 [releases page](https://github.com/ConvoyPanel/panel/releases) instead.
 
 ## Updating
@@ -36,12 +36,12 @@ If you've edited `/opt/convoy/compose.yml`, the update leaves it as it is and sa
 ### Updating from 5.0.0-alpha.1
 
 The `convoy` command that came with 5.0.0-alpha.1 can't update itself, and it restarts everything at once. Replace it
-once with the one from 5.0.0-alpha.7, point the install at that release, and update:
+once with the one from 5.0.0-beta.1, point the install at that release, and update:
 
 ```bash
-curl -fsSL https://github.com/ConvoyPanel/panel/releases/download/v5.0.0-alpha.7/convoy -o /usr/local/bin/convoy
+curl -fsSL https://github.com/ConvoyPanel/panel/releases/download/v5.0.0-beta.1/convoy -o /usr/local/bin/convoy
 chmod 755 /usr/local/bin/convoy
-sed -i 's/^CONVOY_VERSION=.*/CONVOY_VERSION=5.0.0-alpha.7/' /opt/convoy/.env
+sed -i 's/^CONVOY_VERSION=.*/CONVOY_VERSION=5.0.0-beta.1/' /opt/convoy/.env
 convoy upgrade
 ```
 
@@ -53,14 +53,14 @@ From then on, `convoy upgrade` keeps the command up to date itself.
 
 | `CONVOY_VERSION` | Updates to                                               |
 |------------------|----------------------------------------------------------|
-| `5.0.0-alpha.1`  | Exactly that release, so `convoy upgrade` changes nothing. |
+| `5.0.0-beta.1`   | Exactly that release, so `convoy upgrade` changes nothing. |
 | `5.1`            | The newest 5.1.x release, once 5.1 is out.               |
 | `5`              | The newest 5.x release, once 5.0 is out.                 |
 
 None of them move a panel to Convoy 6 on its own.
 
-During the alpha, every install names an exact release. To move to a newer alpha, edit `CONVOY_VERSION`, for example
-to `5.0.0-alpha.7`, then run `convoy upgrade`.
+Until 5.0 is released, every install names an exact release. To move to a newer one, such as from an alpha to the beta,
+edit `CONVOY_VERSION`, for example to `5.0.0-beta.1`, then run `convoy upgrade`.
 
 ## Getting Ready for Convoy 6
 
